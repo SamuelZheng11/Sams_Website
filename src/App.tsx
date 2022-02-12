@@ -1,4 +1,4 @@
-import ShellHost from "./shell/ShellHostComponent";
+import ShellHost from "./shell/host/ShellHostComponent";
 
 function App() {
 	return (

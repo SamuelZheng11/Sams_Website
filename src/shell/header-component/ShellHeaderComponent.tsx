@@ -5,8 +5,13 @@ import './ShellHeaderComponent.scss'
 function ShellHeader() {
     return(
         <AppBar className="shell-header">
-            <Layout orientation='vertical'>
-                <div> world</div>
+            <Layout orientation='horizontal' spacing='fill'>
+                <div>
+                    hello
+                </div>
+                <div>
+                    world
+                </div>
             </Layout>
         </AppBar>
     )

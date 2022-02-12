@@ -1,32 +1,19 @@
-import { LayoutOrientation } from "./LayoutTypes";
+import { ReactElement } from "react";
+import { LayoutOrientation, LayoutSpacing } from "./LayoutTypes";
+import './LayoutComponent.scss';
 
 export interface LayoutProps {
-    orientation: LayoutOrientation
+    children?: ReactElement[];
+    orientation: LayoutOrientation;
+    spacing: LayoutSpacing;
 }
 
 function Layout(props: LayoutProps) {
-    const getLayoutContainer = () => {
-        switch(props.orientation) {
-            case 'horizontal':
-                return(
-                    <div className="layout-vertical-container">
-
-                    </div>
-                );
-
-            case 'vertical':
-                return(
-                    <div className="layout-horizontal-container"></div>
-                );
-
-            default:
-                return(
-                    <div></div>
-                );
-        }
-    }
-
-    return getLayoutContainer()
+    return(
+        <div className={`layout ${props.orientation === 'horizontal' ? 'layout-horizontal-container' : 'layout-vertical-container'} layout-spacing-${props.spacing}`}>
+            {props.children}
+        </div>
+    )
 }
 
 export default Layout;
