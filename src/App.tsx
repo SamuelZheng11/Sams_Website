@@ -1,8 +1,11 @@
 import ShellHost from "./shell/host/ShellHostComponent";
+import './App.css'
 
 function App() {
 	return (
-		<ShellHost></ShellHost>
+		<div className="App">
+			<ShellHost></ShellHost>
+		</div>
 	);
 }
 

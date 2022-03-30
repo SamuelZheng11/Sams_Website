@@ -1,10 +1,10 @@
 export interface TextComponentProps {
-    textToDisplay: string
+    children: string
 };
 
 function TextComponent(textComponentProps: TextComponentProps) {
     return(
-        <div>{textComponentProps.textToDisplay}</div>
+        <div>{textComponentProps.children}</div>
     )
 }
 

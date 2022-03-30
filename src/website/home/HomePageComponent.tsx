@@ -1,11 +1,11 @@
-import TextComponent from '../core/text/TextComponent';
+import TextComponent from '../../core/text/TextComponent';
 
 function HomePageComponent() {
     const textToDisplay = 'Hello World';
 
     return(
         <div>
-            <TextComponent textToDisplay={textToDisplay}></TextComponent>
+            <TextComponent>Hello this is the home page welcome</TextComponent>
         </div>
     )
 }
