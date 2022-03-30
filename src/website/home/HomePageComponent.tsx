@@ -1,11 +1,12 @@
+import PanelComponent from '../../core/panel/PanelComponent';
 import TextComponent from '../../core/text/TextComponent';
 
 function HomePageComponent() {
-    const textToDisplay = 'Hello World';
-
     return(
         <div>
-            <TextComponent>Hello this is the home page welcome</TextComponent>
+            <PanelComponent size="medium">
+                <TextComponent>Hello this is the home page welcome</TextComponent>
+            </PanelComponent>
         </div>
     )
 }
