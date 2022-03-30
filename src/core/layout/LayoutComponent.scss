@@ -1,0 +1,25 @@
+.layout {
+    height: inherit;
+    align-items: center;
+
+
+    // Layout Direction
+    &-vertical-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-horizontal-container{
+        display: flex;
+        flex-direction: row;
+    }
+
+    // Spacing
+    &-spacing-flow {
+        justify-content: flex-start;
+    }
+
+    &-spacing-fill {
+        justify-content: space-between;
+    }
+}
