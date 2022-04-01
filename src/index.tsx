@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
+import './variables.scss'
+import './material-overrides.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

@@ -1,4 +1,9 @@
+@import 'src/variables.scss';
+
+/**
+ * App header background color is being overriden in the material overrides master file
+ */
+
 .shell-header{
     height: 64px;
-    background-color: #F5FEFD !important;
 }

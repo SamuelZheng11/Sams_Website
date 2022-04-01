@@ -1,14 +1,14 @@
 import { Typography } from "@mui/material";
-import TextComponent from "../../../core/text/TextComponent";
 import './IntroComponent.scss'
+import { introMessage, name, welcomeMessage } from "./IntroConstants";
 
 function IntroComponent() {
     return(
         <div className='intro'>
             <img src="MyFace.jpg" className="profile-image"></img>
-            <Typography>Hi there! I'm</Typography>
-            <TextComponent>Sam Zheng</TextComponent>
-            <TextComponent>Welcome to my Website</TextComponent>
+            <Typography variant="subtitle1" className='intro-message'>{introMessage}</Typography>
+            <Typography variant="h2">{name}</Typography>
+            <Typography variant="h5">{welcomeMessage}</Typography>
         </div>
     )
 }

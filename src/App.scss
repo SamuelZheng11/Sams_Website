@@ -1,6 +1,8 @@
+@import './variables.scss';
+
 .App {
   min-height: 100vh;
-  background-color: #FBFCF8;
+  background-color: $background-white;
 
   display: flex;
   flex-direction: column;
