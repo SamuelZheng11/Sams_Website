@@ -1,0 +1,1 @@
+export type TextTypes = 'faint' | 'bold' | 'normal'
