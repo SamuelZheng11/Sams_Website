@@ -1,11 +1,10 @@
-import TextComponent from '../../core/text/TextComponent';
+import './HomePageComponent.scss'
+import IntroComponent from './intro/IntroComponent';
 
 function HomePageComponent() {
-    const textToDisplay = 'Hello World';
-
     return(
-        <div>
-            <TextComponent>Hello this is the home page welcome</TextComponent>
+        <div className='home-page'>
+            <IntroComponent></IntroComponent>
         </div>
     )
 }
