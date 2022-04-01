@@ -1,10 +1,4 @@
 .intro {
-    background: hsla(75, 40%, 98%, 1);
-    background: linear-gradient(90deg, hsla(75, 40%, 98%, 1) 0%, hsla(204, 77%, 86%, 0.5) 100%);
-    background: -moz-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 0%, hsla(204, 77%, 86%, 0.5) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 0%, hsla(204, 77%, 86%, 0.5) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="var($background-white)", endColorstr="var($background-blue)", GradientType=1 );
-
     background-size: 100% 100%;
     padding: 100px 0 100px 0;
     width: 100vw;
