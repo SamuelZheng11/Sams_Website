@@ -1,8 +1,9 @@
-@import './variables.scss';
+@import '../../variables.scss';
 
 .App {
   min-height: 100vh;
   background-color: $background-white;
+  font-family: 'MontserratLight';
 
   display: flex;
   flex-direction: column;

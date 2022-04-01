@@ -3,14 +3,15 @@ import { LayoutOrientation, LayoutSpacing } from "./LayoutTypes";
 import './LayoutComponent.scss';
 
 export interface LayoutProps {
-    children?: ReactElement[];
+    children?: ReactElement | ReactElement[];
     orientation: LayoutOrientation;
-    spacing: LayoutSpacing;
+    spacing?: LayoutSpacing;
+    className?: string | string[];
 }
 
 function Layout(props: LayoutProps) {
     return(
-        <div className={`layout ${props.orientation === 'horizontal' ? 'layout-horizontal-container' : 'layout-vertical-container'} layout-spacing-${props.spacing}`}>
+        <div className={`${props.className} layout ${props.orientation === 'horizontal' ? 'layout-horizontal-container' : 'layout-vertical-container'} layout-spacing-${props.spacing}`}>
             {props.children}
         </div>
     )

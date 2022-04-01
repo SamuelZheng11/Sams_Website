@@ -5,9 +5,20 @@
  */
 
 .shell-header{
+    padding: 0 $size-x-large 0 $size-x-large;
     height: 64px;
     background-color: $background-white !important;
 
     background: transparent !important;
     box-shadow: none !important;
+
+    .header-nav-container{
+        .header-nav-option {
+            padding: 0 $size-medium 0 $size-medium;
+        }
+
+        :last-child {
+            padding-right: 0;
+        }
+    }
 }
