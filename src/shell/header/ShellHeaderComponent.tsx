@@ -1,17 +1,16 @@
 import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from '../../core/layout/LayoutComponent';
-import NavigationSlice from '../host/NavigationState';
-import { scrollTo } from '../host/NavigationState';
+import { scrollTo } from '../host/AppNavigationSlice';
+import { useAppSelector, useAppDispatch } from '../host/AppHooks';
 import { ContactHeaderTitle, EducationHeaderTitle, EmploymentHeaderTitle, HeaderWebsiteName, HomeHeaderTitle, ProjectHeaderTitle } from './ShellHeaderConstants';
 
 import './ShellHeaderComponent.scss'
 
 function ShellHeader() {
-    const lastNavView = useSelector(state => state.counter)
-    const dispatch = useDispatch()
+    const lastNavView = useAppSelector(state  => state.navigation.view)
+    const dispatch = useAppDispatch()
 
     return(
         <AppBar color="default" className="shell-header">
@@ -21,19 +20,19 @@ function ShellHeader() {
                 </Typography>
                 
                 <Layout className="header-nav-container" orientation='horizontal' spacing='fill'>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo())}>
+                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(HomeHeaderTitle))}>
                         {HomeHeaderTitle}
                     </Typography>
-                    <Typography className="header-nav-option" variant="h6">
+                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EmploymentHeaderTitle))}>
                         {EmploymentHeaderTitle}
                     </Typography>
-                    <Typography className="header-nav-option" variant="h6">
+                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EducationHeaderTitle))}>
                         {EducationHeaderTitle}
                     </Typography>
-                    <Typography className="header-nav-option" variant="h6">
+                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(ProjectHeaderTitle))}>
                         {ProjectHeaderTitle}
                     </Typography>
-                    <Typography className="header-nav-option" variant="h6">
+                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(ContactHeaderTitle))}>
                         {ContactHeaderTitle}
                     </Typography>
                 </Layout>
