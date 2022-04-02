@@ -1,6 +1,6 @@
-@import '../../variables.scss';
+@import 'src/variables.scss';
 
-.App {
+.website {
   min-height: 100vh;
   background-color: $background-white;
   font-family: 'MontserratLight';
@@ -18,19 +18,4 @@
   background: -moz-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
   background: -webkit-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="var($background-white)", endColorstr="var($background-blue)", GradientType=1 );
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

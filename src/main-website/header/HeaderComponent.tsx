@@ -2,18 +2,18 @@ import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 
 import Layout from '../../core/layout/LayoutComponent';
-import { scrollTo } from '../host/AppNavigationSlice';
-import { useAppSelector, useAppDispatch } from '../host/AppHooks';
-import { ContactHeaderTitle, EducationHeaderTitle, EmploymentHeaderTitle, HeaderWebsiteName, HomeHeaderTitle, ProjectHeaderTitle } from './ShellHeaderConstants';
+import { scrollTo } from '../WebsiteNavigationSlice';
+import { useAppSelector, useAppDispatch } from '../WebsiteHooks';
+import { ContactHeaderTitle, EducationHeaderTitle, EmploymentHeaderTitle, HeaderWebsiteName, HomeHeaderTitle, ProjectHeaderTitle } from './HeaderConstants';
 
-import './ShellHeaderComponent.scss'
+import './HeaderComponent.scss'
 
-function ShellHeader() {
+function Header() {
     const lastNavView = useAppSelector(state  => state.navigation.view)
     const dispatch = useAppDispatch()
 
     return(
-        <AppBar color="default" className="shell-header">
+        <AppBar color="default" className="header">
             <Layout orientation='horizontal' spacing='fill'>
                 <Typography variant="h5">
                     {HeaderWebsiteName}
@@ -41,4 +41,4 @@ function ShellHeader() {
     )
 }
 
-export default ShellHeader;
+export default Header;

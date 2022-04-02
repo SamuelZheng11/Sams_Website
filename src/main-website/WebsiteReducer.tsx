@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import navigationReducer from './AppNavigationSlice'
+import navigationReducer from './WebsiteNavigationSlice'
 
 const rootReducer = combineReducers({
     // Define a top-level state field named `todos`, handled by `todosReducer`

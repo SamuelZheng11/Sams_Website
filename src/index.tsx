@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import './variables.scss'
 import './material-overrides.scss';
-import App from './shell/host/App';
+import Website from './main-website/Website';
 import reportWebVitals from './reportWebVitals';
-import store from './shell/host/AppStore'
+import store from './main-website/WebsiteStore'
 import { Provider } from 'react-redux'
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Website />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
