@@ -1,6 +1,6 @@
-export const HeaderWebsiteName = 'samuelzheng.com';
-export const HomeHeaderTitle = 'Home';
-export const ProjectHeaderTitle = 'Projects';
-export const EducationHeaderTitle = 'Education';
-export const ContactHeaderTitle = 'Contact';
-export const EmploymentHeaderTitle = 'Employment';
+export const HEADER_WEBSITE_NAME = 'samuelzheng.com';
+export const HOME_HEADER_TITLE = 'Home';
+export const PROJECT_HEADER_TITLE = 'Projects';
+export const EDUCATION_HEADER_TITLE = 'Education';
+export const CONTACT_HEADER_TITLE = 'Contact';
+export const EMPLOYMENT_HEADER_TITLE = 'Employment';
