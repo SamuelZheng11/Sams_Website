@@ -1,0 +1,11 @@
+@import 'src/variables.scss';
+
+.contact-container {
+    .contact-detail-text {
+        padding-left: $spacing-medium;
+    }
+
+    .filler {
+        height: 500px;
+    }
+}

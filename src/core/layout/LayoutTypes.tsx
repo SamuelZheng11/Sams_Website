@@ -1,3 +1,3 @@
-export type LayoutOrientation = 'horizontal' | 'vertical';
+export type TLayoutOrientation = 'horizontal' | 'vertical';
 
-export type LayoutSpacing = 'flow' | 'fill'
+export type TLayoutSpacing = 'flow' | 'fill'

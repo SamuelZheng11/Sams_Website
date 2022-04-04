@@ -1,10 +1,10 @@
 import { ReactElement } from "react"
-import { Size } from "../types"
+import { TSize } from "../CoreTypes"
 import "./PanelComponent.scss"
 
 export interface PanelProps {
     children?: ReactElement | ReactElement[]
-    size?: Size
+    size?: TSize
 }
 
 function PanelComponent(props: PanelProps) {

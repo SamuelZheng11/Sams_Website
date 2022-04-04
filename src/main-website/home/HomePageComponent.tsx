@@ -3,8 +3,10 @@ import IntroComponent from './intro/IntroComponent';
 
 function HomePageComponent() {
     return(
-        <div className='home-page'>
-            <IntroComponent></IntroComponent>
+        <div>
+            <div id="intro">
+                <IntroComponent></IntroComponent>
+            </div>
         </div>
     )
 }

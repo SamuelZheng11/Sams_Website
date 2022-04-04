@@ -1,0 +1,25 @@
+@import 'src/variables.scss';
+
+/**
+ * App header background color is being overriden in the material overrides master file
+ */
+
+.header{
+    padding: 0 $size-x-large 0 $size-x-large;
+    height: 64px;
+    background-color: $background-white !important;
+
+    background: transparent !important;
+    box-shadow: none !important;
+
+    .header-nav-container{
+        .header-nav-option {
+            padding: 0 $size-medium 0 $size-medium;
+            cursor: pointer;
+        }
+
+        :last-child {
+            padding-right: 0;
+        }
+    }
+}

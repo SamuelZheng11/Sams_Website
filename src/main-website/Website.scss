@@ -1,0 +1,21 @@
+@import 'src/variables.scss';
+
+.website {
+  min-height: 100vh;
+  background-color: $background-white;
+  font-family: 'MontserratLight';
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: calc(10px + 2vmin);
+  text-align: center;
+
+  background: hsla(75, 40%, 98%, 1);
+  background: linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="var($background-white)", endColorstr="var($background-blue)", GradientType=1 );
+}
