@@ -15,6 +15,7 @@
     .header-nav-container{
         .header-nav-option {
             padding: 0 $size-medium 0 $size-medium;
+            cursor: pointer;
         }
 
         :last-child {

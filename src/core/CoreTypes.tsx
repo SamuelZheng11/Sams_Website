@@ -11,4 +11,4 @@ export const SIZES = [
     'xxxx-large'
 ];
 
-export type Size = typeof SIZES[number]
+export type TSize = typeof SIZES[number]

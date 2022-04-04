@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { EWebsitePages } from './WebsiteTypes'
 
 // Define a type for the slice state
 export interface NavigationState {
-  view: string
+  view: EWebsitePages
 }
 
 // Define the initial state using that type
 const initialState = {
-  view: 'home'
+  view: EWebsitePages.home
 } as NavigationState
 
 export const NavigationSlice = createSlice({
   name: 'navigation',
   initialState,
   reducers: {
-    scrollTo: (state, action: PayloadAction<string>) => {
-      console.log(`Setting appstate view to: ${action.payload}`);
+    scrollTo: (state, action: PayloadAction<EWebsitePages>) => {
       return {
         ...state,
         view: action.payload,

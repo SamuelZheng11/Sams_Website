@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
-import { LayoutOrientation, LayoutSpacing } from "./LayoutTypes";
+import { TLayoutOrientation, TLayoutSpacing } from "./LayoutTypes";
 import './LayoutComponent.scss';
 
 export interface LayoutProps {
     children?: ReactElement | ReactElement[];
-    orientation: LayoutOrientation;
-    spacing?: LayoutSpacing;
+    orientation: TLayoutOrientation;
+    spacing?: TLayoutSpacing;
     className?: string | string[];
 }
 
