@@ -13,7 +13,7 @@ function Header() {
     const dispatch = useAppDispatch()
 
     return(
-        <AppBar color="default" className="header">
+        <AppBar color="default" className="header" >
             <Layout orientation='horizontal' spacing='fill'>
                 <Typography variant="h5">
                     {HEADER_WEBSITE_NAME}

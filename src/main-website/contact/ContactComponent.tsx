@@ -13,7 +13,6 @@ import './ContactComponent.scss'
 function ContactComponent() {
     return(
         <div className='contact-container'>
-            <div className="filler">asdf</div>
             <Layout orientation='horizontal'>
                 <PersonIcon></PersonIcon>
                 <Typography className='contact-detail-text'>{FULL_NAME}</Typography>

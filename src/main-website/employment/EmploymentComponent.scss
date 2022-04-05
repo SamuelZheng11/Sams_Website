@@ -1,0 +1,33 @@
+@import 'src/variables.scss';
+
+.employment{
+    margin: 0 $spacing-xxxxx-large 0 $spacing-xxxxx-large;
+
+    > * {
+        margin-bottom: $spacing-large;
+    }
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    &-card{
+        padding: $spacing-medium;
+
+        &-title-container {            
+            align-items: baseline;
+
+            > * { 
+                padding-right: $spacing-xx-small;
+            }
+    
+            :last-child {
+                padding-right: 0;
+            }
+        }
+
+        &-body-text {
+            text-align: left;
+        }
+    }
+}
