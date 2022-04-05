@@ -18,4 +18,12 @@
   background: -moz-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
   background: -webkit-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="var($background-white)", endColorstr="var($background-blue)", GradientType=1 );
+
+  &-body {
+    > * {
+      padding: $spacing-xxx-large 0 $spacing-xxx-large 0;
+      justify-content: center;
+      display: flex;
+    }
+  }
 }

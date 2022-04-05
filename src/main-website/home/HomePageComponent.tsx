@@ -4,9 +4,7 @@ import IntroComponent from './intro/IntroComponent';
 function HomePageComponent() {
     return(
         <div>
-            <div id="intro">
-                <IntroComponent></IntroComponent>
-            </div>
+            <IntroComponent></IntroComponent>
         </div>
     )
 }

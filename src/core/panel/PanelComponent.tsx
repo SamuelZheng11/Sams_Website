@@ -3,14 +3,15 @@ import { TSize } from "../CoreTypes"
 import "./PanelComponent.scss"
 
 export interface PanelProps {
-    children?: ReactElement | ReactElement[]
+    className?: string | string[],
+    children?: ReactElement | ReactElement[],
     size?: TSize
 }
 
 function PanelComponent(props: PanelProps) {
 
     return (
-        <div className="panel" >
+        <div className={`panel ${props.className}`}>
             {props.children}
         </div>
     )
