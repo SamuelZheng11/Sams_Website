@@ -11,7 +11,7 @@ function EducationComponent() {
     return(
         <div className='education'>
             <div className="education-title-container">
-                <Typography variant='h2'>
+                <Typography variant='h3'>
                     {EDUCATION_TITLE}
                 </Typography>
             </div>

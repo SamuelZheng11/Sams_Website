@@ -1,3 +1,3 @@
 export enum EWebsitePages {
-    home, project, contact, education, employment
+    home, project, contact, education, employment, about
 }
