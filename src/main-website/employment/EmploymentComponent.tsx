@@ -2,14 +2,22 @@ import { Typography } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 
 import Layout from '../../core/layout/LayoutComponent';
-import PanelComponent from '../../core/panel/PanelComponent';
+import Panel from '../../core/panel/PanelComponent';
 
 import './EmploymentComponent.scss'
+
+const EMPLOYMENT_TITLE = 'Employment History';
 
 function EmploymentComponent() {
     return(
         <Layout orientation='vertical' className="employment">
-            <PanelComponent className="employment-card">
+            <div className="employment-title-container">
+                <Typography variant='h2'>
+                    {EMPLOYMENT_TITLE}
+                </Typography>
+            </div>
+
+            <Panel className="employment-card">
                     <Layout orientation='horizontal'>
                         <a href="https://wooliesx.com.au/">
                             <Layout className="employment-card-title-container" orientation='horizontal'>
@@ -30,9 +38,9 @@ function EmploymentComponent() {
                     scalably, as well as how to monitor and maintain them using application health 
                     metrics using appinsights
                 </Typography>
-            </PanelComponent>
+            </Panel>
 
-            <PanelComponent className="employment-card">
+            <Panel className="employment-card">
                 <Layout orientation='horizontal'>
                     <a href="https://www.honeywell.com/">
                         <Layout className="employment-card-title-container" orientation='horizontal'>
@@ -50,9 +58,9 @@ function EmploymentComponent() {
                     NPM. These skills have furthered my understanding of how to build front-end
                     application and the intricacies of package management.
                 </Typography>
-            </PanelComponent>
+            </Panel>
 
-            <PanelComponent className="employment-card">
+            <Panel className="employment-card">
                 <Layout orientation='horizontal'>
                     <a href="https://www.olympic.co.nz/">
                         <Layout className="employment-card-title-container" orientation='horizontal'>
@@ -70,7 +78,7 @@ function EmploymentComponent() {
                     framework, SignalR and Angular Redux (NgRx). These skills allow me to create 
                     and maintain both front-end and back-end real-time applications.
                 </Typography>
-            </PanelComponent>
+            </Panel>
         </Layout>
     );
 }
