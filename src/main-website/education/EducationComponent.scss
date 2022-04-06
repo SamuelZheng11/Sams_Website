@@ -25,5 +25,10 @@
             text-align: left;
             padding-bottom: $spacing-xx-small;
         }
+
+        
+        :last-child {
+            padding-bottom: 0;
+        }
     }
 }
