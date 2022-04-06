@@ -2,7 +2,7 @@ import { createRef, useEffect } from 'react';
 
 import { useAppSelector } from './WebsiteHooks';
 import { EWebsitePages } from './WebsiteTypes';
-import Header from './header/HeaderComponent';
+import HeaderComponent from './header/HeaderComponent';
 import HomePageComponent from './home/HomePageComponent';
 import ContactComponent from './contact/ContactComponent';
 import EmploymentComponent from './employment/EmploymentComponent';
@@ -11,6 +11,7 @@ import ProjectComponent from './project/ProjectComponent';
 
 import './Website.scss'
 import AboutComponent from './about/AboutComponent';
+import FooterComponent from './footer/FooterComponent';
 
 function Website() {
 	const view = useAppSelector(state  => state.navigation.view);
@@ -53,7 +54,7 @@ function Website() {
 
 	return (
 		<div className="website">
-			<Header></Header>
+			<HeaderComponent></HeaderComponent>
 			<div className="website-body">
 				<div ref={homeRef}>
 					<HomePageComponent></HomePageComponent>
@@ -74,6 +75,7 @@ function Website() {
 					<ContactComponent></ContactComponent>
 				</div>
 			</div>
+			<FooterComponent></FooterComponent>
 		</div>
 	);
 }
