@@ -38,7 +38,7 @@ function EducationComponent() {
                 </Typography>
                 
                 <Typography variant="body1" className="education-card-body-text">
-                    At UoA I was achieved the awards/milestones:
+                    At UoA I achieved the awards/milestones:
                     <ul>
                         <li> Dean's Honours List class of 2019 (Top 5% of their year of study) </li>
                         <li> First in class SOFTENG 762: Robotics Process Automation </li>
