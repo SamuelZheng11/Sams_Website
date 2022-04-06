@@ -7,10 +7,11 @@ import { useAppSelector } from './WebsiteHooks';
 import { EWebsitePages } from './WebsiteTypes';
 import EmploymentComponent from './employment/EmploymentComponent';
 import EducationComponent from './education/EducationComponent';
+import ProjectComponent from './project/ProjectComponent';
 
 function Website() {
 	const view = useAppSelector(state  => state.navigation.view);
-	const [homeRef, employmentRef, educationRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
+	const [homeRef, employmentRef, educationRef, projectRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
 
 	useEffect(() => {
 		checkViewToScrollTo()
@@ -28,6 +29,10 @@ function Website() {
 				
 			case EWebsitePages.education:
 				educationRef.current?.scrollIntoView({behavior: "smooth"});
+				break;
+
+			case EWebsitePages.project:
+				projectRef.current?.scrollIntoView({behavior: "smooth"});
 				break;
 
 			case EWebsitePages.contact: 
@@ -51,6 +56,9 @@ function Website() {
 				</div>
 				<div ref={educationRef}>
 					<EducationComponent></EducationComponent>
+				</div>
+				<div ref={projectRef}>
+					<ProjectComponent></ProjectComponent>
 				</div>
 				<div ref={contactRef}>
 					<ContactComponent></ContactComponent>
