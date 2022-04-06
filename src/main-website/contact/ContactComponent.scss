@@ -1,6 +1,10 @@
 @import 'src/variables.scss';
 
-.contact-container {
+.contact {
+    &-title-container {
+        margin-bottom: $spacing-large;
+    }
+
     .contact-detail-text {
         padding-left: $spacing-medium;
     }
