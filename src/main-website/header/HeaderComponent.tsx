@@ -4,12 +4,12 @@ import AppBar from '@mui/material/AppBar';
 import Layout from '../../core/layout/LayoutComponent';
 import { EWebsitePages } from '../WebsiteTypes';
 import { scrollTo } from '../WebsiteNavigationSlice';
-import { useAppSelector, useAppDispatch } from '../WebsiteHooks';
+import { useAppDispatch } from '../WebsiteHooks';
 import { CONTACT_HEADER_TITLE, EDUCATION_HEADER_TITLE, EMPLOYMENT_HEADER_TITLE, HEADER_WEBSITE_NAME, HOME_HEADER_TITLE, PROJECT_HEADER_TITLE } from './HeaderConstants';
 
 import './HeaderComponent.scss'
 
-function Header() {
+function HeaderComponent() {
     const dispatch = useAppDispatch()
 
     return(
@@ -41,4 +41,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default HeaderComponent;

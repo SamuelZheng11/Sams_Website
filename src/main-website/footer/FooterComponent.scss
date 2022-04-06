@@ -1,0 +1,9 @@
+@import 'src/variables.scss';
+
+.footer {
+    margin-bottom: $spacing-large;
+    
+    &-text{
+        text-align: center;
+    }
+}
