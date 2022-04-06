@@ -12,7 +12,7 @@ function EmploymentComponent() {
     return(
         <Layout orientation='vertical' className="employment">
             <div className="employment-title-container">
-                <Typography variant='h2'>
+                <Typography variant='h3'>
                     {EMPLOYMENT_TITLE}
                 </Typography>
             </div>

@@ -1,0 +1,18 @@
+@import 'src/variables.scss';
+
+.about {
+    &-title-container {
+        margin-bottom: $spacing-x-small;
+    }
+
+    &-body {
+        &-text {
+            text-align: left;
+            padding-bottom: $spacing-xx-small;
+        }
+    
+        &-container {
+            padding: $spacing-x-large;
+        }
+    }
+}
