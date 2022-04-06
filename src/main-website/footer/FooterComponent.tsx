@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import Layout from '../../core/layout/LayoutComponent';
 import './FooterComponent.scss';
 
-const CREDITS = 'Website is wholly developed and maintained by me (sam)';
+const CREDITS = 'Website is developed and maintained wholly by me (sam)';
 const CODE_ACKNOWLEDGMENT = 'Developed using React';
 const DEPLOYMENT_ACKNOWLEDGMENT = 'Deployed in AWS';
 
