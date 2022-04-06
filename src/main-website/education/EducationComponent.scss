@@ -1,25 +1,16 @@
 @import 'src/variables.scss';
 
-.employment{
-    > * {
+.education {
+    &-title-container {
         margin-bottom: $spacing-large;
     }
 
-    &-title-container {
-        margin-bottom: $spacing-xx-large;
-    }
-
-    :last-child {
-        margin-bottom: 0;
-    }
-
     &-card{
-        padding: $spacing-x-large;        
+        padding: $spacing-x-large;
 
         &-title-container {            
             align-items: baseline;
             padding-bottom: $spacing-x-small;
-
 
             > * { 
                 padding-right: $spacing-xx-small;
@@ -32,6 +23,7 @@
 
         &-body-text {
             text-align: left;
+            padding-bottom: $spacing-xx-small;
         }
     }
 }

@@ -8,7 +8,7 @@ export interface PanelProps {
     size?: TSize
 }
 
-function PanelComponent(props: PanelProps) {
+function Panel(props: PanelProps) {
 
     return (
         <div className={`panel ${props.className}`}>
@@ -17,4 +17,4 @@ function PanelComponent(props: PanelProps) {
     )
 }
 
-export default PanelComponent
+export default Panel

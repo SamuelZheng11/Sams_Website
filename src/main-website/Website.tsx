@@ -6,10 +6,11 @@ import { createRef, useEffect } from 'react';
 import { useAppSelector } from './WebsiteHooks';
 import { EWebsitePages } from './WebsiteTypes';
 import EmploymentComponent from './employment/EmploymentComponent';
+import EducationComponent from './education/EducationComponent';
 
 function Website() {
 	const view = useAppSelector(state  => state.navigation.view);
-	const [homeRef, employmentRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
+	const [homeRef, employmentRef, educationRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
 
 	useEffect(() => {
 		checkViewToScrollTo()
@@ -23,6 +24,10 @@ function Website() {
 
 			case EWebsitePages.employment:
 				employmentRef.current?.scrollIntoView({behavior: "smooth"});
+				break;
+				
+			case EWebsitePages.education:
+				educationRef.current?.scrollIntoView({behavior: "smooth"});
 				break;
 
 			case EWebsitePages.contact: 
@@ -43,6 +48,9 @@ function Website() {
 				</div>
 				<div ref={employmentRef}>
 					<EmploymentComponent></EmploymentComponent>
+				</div>
+				<div ref={educationRef}>
+					<EducationComponent></EducationComponent>
 				</div>
 				<div ref={contactRef}>
 					<ContactComponent></ContactComponent>
