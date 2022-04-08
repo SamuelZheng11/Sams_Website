@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './colors.scss';
 
 .MuiTypography-root {
     font-family: inherit !important;
@@ -6,6 +7,7 @@
 
 .MuiAppBar-root {
     color: inherit !important;
-    background-color: inherit !important;
-    box-shadow: inherit !important
+    // Need to fix this later
+    background-color: $background-color-base-1 !important;
+    box-shadow: inherit !important;
 }

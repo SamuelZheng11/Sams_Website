@@ -15,7 +15,7 @@ function HeaderComponent() {
 	const theme = useAppSelector(state  => state.navigation.theme);
 
     return(
-        <AppBar color="default" className="header" >
+        <AppBar className="header" >
             <Layout orientation='horizontal' spacing='fill'>
                 <Typography variant="h5">
                     {HEADER_WEBSITE_NAME}
