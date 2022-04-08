@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import { useAppDispatch, useAppSelector } from '../WebsiteHooks';
+import { useAppDispatch } from '../WebsiteHooks';
 
 import Layout from '../../core/layout/LayoutComponent';
 import HideOnScroll from './hide-on-scroll/HideOnScrollComponent';
