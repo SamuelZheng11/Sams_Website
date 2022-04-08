@@ -8,10 +8,13 @@
 .header{
     padding: 0 $size-large 0 $size-large;
     height: $size-xxx-large;
-    background-color: rgba($color: $background-white, $alpha: 0.9) !important;
+    background-color: rgba($background-color-base-1, 0.9);
+
+    color: $text-color;
+    a { color: var(--link-color); }
 
     // background: transparent !important;
-    box-shadow: none !important;
+    box-shadow: none;
 
     &-nav-container{
         .header-nav-option {

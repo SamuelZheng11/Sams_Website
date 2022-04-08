@@ -2,8 +2,19 @@
 @import 'src/colors.scss';
 
 .website {
+  @include lightmode();
+  &.is_inverted {
+      @include darkmode();
+  }
+
+  @media (prefers-color-scheme: dark) {
+      @include darkmode();
+      &.is_inverted {
+          @include lightmode();
+      }
+  }
+
   min-height: 100vh;
-  background-color: $background-white;
   font-family: 'MontserratLight';
 
   display: flex;
@@ -14,11 +25,21 @@
   font-size: calc(10px + 2vmin);
   text-align: center;
 
-  background: hsla(75, 40%, 98%, 1);
-  background: linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(75, 40%, 98%, 1) 56%, hsla(204, 77%, 86%, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="var($background-white)", endColorstr="var($background-blue)", GradientType=1 );
+  background: $background-color-base-1;
+  background: linear-gradient(90deg, $background-color-base-1 80%, $background-color-accent 100%);
+  background: -moz-linear-gradient(90deg, $background-color-base-1 80%, $background-color-accent 100%);
+  background: -webkit-linear-gradient(90deg, $background-color-base-1 80%, $background-color-accent 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$background-color-base-1", endColorstr="$background-color-accent", GradientType=1 );
+
+  color: $text-color;
+  
+  a:link {
+    color: $link-color;
+  }
+
+  a:visited {
+    color: $link-color-visited;
+  }
 
   &-body {
     > * {
