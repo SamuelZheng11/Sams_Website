@@ -1,38 +1,23 @@
 import { ReactElement } from 'react';
-import { Slide, Typography, useScrollTrigger } from '@mui/material';
+import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { useAppDispatch, useAppSelector } from '../WebsiteHooks';
 
 import Layout from '../../core/layout/LayoutComponent';
+import HideOnScroll from './hide-on-scroll/HideOnScrollComponent';
 import { EWebsitePages } from '../WebsiteTypes';
 import { scrollTo, toggleTheme } from '../WebsiteNavigationSlice';
-import { ThemeSwitch } from './HeaderThemeSwitchComponent';
+import { ThemeSwitch } from './assets/HeaderThemeSwitchComponent';
 import { CONTACT_HEADER_TITLE, EDUCATION_HEADER_TITLE, EMPLOYMENT_HEADER_TITLE, HEADER_WEBSITE_NAME, HOME_HEADER_TITLE, PROJECT_HEADER_TITLE } from './HeaderConstants';
 
 import './HeaderComponent.scss'
-
-export interface IHideOnScrollProps {
-    children: ReactElement;
-}
 
 export interface IHeaderProps {
     children?: ReactElement;
 }
 
-function HideOnScroll(props: IHideOnScrollProps) { 
-    const { children } = props;
-    const scrollTrigger = useScrollTrigger();
-
-    return (
-        <Slide appear={false} direction="down" in={!scrollTrigger}>
-          {children}
-        </Slide>
-      );
-}
-
 function HeaderComponent(props: IHeaderProps) {
     const dispatch = useAppDispatch()
-	const theme = useAppSelector(state  => state.navigation.theme);
 
     return(
         <HideOnScroll {...props}>

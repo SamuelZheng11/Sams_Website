@@ -8,6 +8,7 @@
 .header{
     padding: 0 $size-large 0 $size-large;
     height: $size-xxx-large;
+    overflow-x: overlay;
 
     color: $text-color;
     a { color: var(--link-color); }
@@ -15,6 +16,8 @@
     box-shadow: none;
 
     &-nav-container{
+        padding-left: $spacing-x-small;
+
         .header-nav-option {
             margin: 0 $size-x-small 0 $size-x-small;
             cursor: pointer;
