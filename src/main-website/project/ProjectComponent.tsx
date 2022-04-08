@@ -16,7 +16,7 @@ function ProjectComponent() {
 
             <Panel className="project-card">
                 <Layout className="project-card-title-container" orientation='horizontal'>
-                    <Typography variant="h4">Sam's Website</Typography>
+                    <Typography variant="h4">This Website</Typography>
                     <Typography variant="subtitle1">(2022)</Typography>
                 </Layout>
 
