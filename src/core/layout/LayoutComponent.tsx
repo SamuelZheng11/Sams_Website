@@ -4,7 +4,7 @@ import './LayoutComponent.scss';
 
 export interface LayoutProps {
     children?: ReactElement | ReactElement[];
-    orientation: TLayoutOrientation;
+    orientation?: TLayoutOrientation;
     spacing?: TLayoutSpacing;
     className?: string | string[];
 }

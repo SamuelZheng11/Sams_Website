@@ -26,11 +26,11 @@ function HeaderComponent() {
                     <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.employment))}>
                         {EMPLOYMENT_HEADER_TITLE}
                     </Typography>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.education))}>
-                        {EDUCATION_HEADER_TITLE}
-                    </Typography>
                     <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.project))}>
                         {PROJECT_HEADER_TITLE}
+                    </Typography>
+                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.education))}>
+                        {EDUCATION_HEADER_TITLE}
                     </Typography>
                     <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.contact))}>
                         {CONTACT_HEADER_TITLE}

@@ -1,0 +1,47 @@
+@import 'src/variables.scss';
+
+.project {
+    > * {
+        margin-bottom: $spacing-large;
+    }
+
+    &-title-container {
+        margin-bottom: $spacing-xx-large;
+    }
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    &-card{
+        padding: $spacing-x-large;
+
+        &-title-container {            
+            align-items: baseline;
+            padding-bottom: $spacing-x-small;
+
+
+            > * { 
+                padding-right: $spacing-xx-small;
+            }
+    
+            :last-child {
+                padding-right: 0;
+            }
+        }
+
+        &-body {
+            > * { 
+                padding-bottom: $spacing-xx-small;
+            }
+            
+            &-text {
+                text-align: left;
+            }
+
+            :last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+}
