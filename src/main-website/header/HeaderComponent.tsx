@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material';
+import { ReactElement } from 'react';
+import { Slide, Typography, useScrollTrigger } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { useAppDispatch, useAppSelector } from '../WebsiteHooks';
 
@@ -10,38 +11,59 @@ import { CONTACT_HEADER_TITLE, EDUCATION_HEADER_TITLE, EMPLOYMENT_HEADER_TITLE, 
 
 import './HeaderComponent.scss'
 
-function HeaderComponent() {
+export interface IHideOnScrollProps {
+    children: ReactElement;
+}
+
+export interface IHeaderProps {
+    children?: ReactElement;
+}
+
+function HideOnScroll(props: IHideOnScrollProps) { 
+    const { children } = props;
+    const scrollTrigger = useScrollTrigger();
+
+    return (
+        <Slide appear={false} direction="down" in={!scrollTrigger}>
+          {children}
+        </Slide>
+      );
+}
+
+function HeaderComponent(props: IHeaderProps) {
     const dispatch = useAppDispatch()
 	const theme = useAppSelector(state  => state.navigation.theme);
 
     return(
-        <AppBar className="header" >
-            <Layout orientation='horizontal' spacing='fill'>
-                <Typography variant="h5">
-                    {HEADER_WEBSITE_NAME}
-                </Typography>
-                
-                <Layout className="header-nav-container" orientation='horizontal' spacing='fill'>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.home))}>
-                        {HOME_HEADER_TITLE}
+        <HideOnScroll {...props}>
+            <AppBar className="header" >
+                <Layout orientation='horizontal' spacing='fill'>
+                    <Typography variant="h5">
+                        {HEADER_WEBSITE_NAME}
                     </Typography>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.employment))}>
-                        {EMPLOYMENT_HEADER_TITLE}
-                    </Typography>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.project))}>
-                        {PROJECT_HEADER_TITLE}
-                    </Typography>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.education))}>
-                        {EDUCATION_HEADER_TITLE}
-                    </Typography>
-                    <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.contact))}>
-                        {CONTACT_HEADER_TITLE}
-                    </Typography>
+                    
+                    <Layout className="header-nav-container" orientation='horizontal' spacing='fill'>
+                        <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.home))}>
+                            {HOME_HEADER_TITLE}
+                        </Typography>
+                        <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.employment))}>
+                            {EMPLOYMENT_HEADER_TITLE}
+                        </Typography>
+                        <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.project))}>
+                            {PROJECT_HEADER_TITLE}
+                        </Typography>
+                        <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.education))}>
+                            {EDUCATION_HEADER_TITLE}
+                        </Typography>
+                        <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.contact))}>
+                            {CONTACT_HEADER_TITLE}
+                        </Typography>
 
-                    <ThemeSwitch onChange={() => dispatch(toggleTheme())} sx={{ m: 1 }} />
+                        <ThemeSwitch onChange={() => dispatch(toggleTheme())} sx={{ m: 1 }} />
+                    </Layout>
                 </Layout>
-            </Layout>
-        </AppBar>
+            </AppBar>
+        </HideOnScroll>
     )
 }
 
