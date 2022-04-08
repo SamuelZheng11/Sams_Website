@@ -14,12 +14,18 @@ import AboutComponent from './about/AboutComponent';
 import FooterComponent from './footer/FooterComponent';
 
 function Website() {
-	const view = useAppSelector(state  => state.navigation.view);
-	const [homeRef, aboutRef, employmentRef, educationRef, projectRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
+	const view = useAppSelector(state => state.navigation.view);
+	const theme = useAppSelector(state => state.navigation.theme);
+
+	const [websiteRef, homeRef, aboutRef, employmentRef, educationRef, projectRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
 
 	useEffect(() => {
 		checkViewToScrollTo()
-	});
+	}, [view]);
+
+	useEffect(() => {
+		theme !== 'light' ? websiteRef.current?.classList.add('is_inverted') : websiteRef.current?.classList.remove('is_inverted')
+	}, [theme]);
 
 	const checkViewToScrollTo = () => {
 		switch(view) {
@@ -53,7 +59,7 @@ function Website() {
 	};
 
 	return (
-		<div className="website">
+		<div className="website" ref={websiteRef}>
 			<HeaderComponent></HeaderComponent>
 			<div className="website-body">
 				<div ref={homeRef}>

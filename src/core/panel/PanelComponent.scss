@@ -1,7 +1,7 @@
+@import 'src/colors.scss';
+
 .panel {
     height: inherit;
-    background: white;
     border-radius:  5px;
-    border: 1px black;
-    background-color: rgba(210, 215, 211, 1);
+    background-color: $background-color-base-2
 }

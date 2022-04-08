@@ -8,12 +8,16 @@
 .header{
     padding: 0 $size-large 0 $size-large;
     height: $size-xxx-large;
-    background-color: rgba($color: $background-white, $alpha: 0.9) !important;
+    overflow-x: overlay;
 
-    // background: transparent !important;
-    box-shadow: none !important;
+    color: $text-color;
+    a { color: var(--link-color); }
+
+    box-shadow: none;
 
     &-nav-container{
+        padding-left: $spacing-x-small;
+
         .header-nav-option {
             margin: 0 $size-x-small 0 $size-x-small;
             cursor: pointer;
