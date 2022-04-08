@@ -46,7 +46,7 @@ function ProjectComponent() {
                     <Typography variant="h6" className="project-card-body-text">Demo comming soon</Typography>
 
                     <Typography variant="body1" className="project-card-body-text">
-                        The purpose of this project was an attempt to solve a difficult (NP-Hard) problem. The tool uses 
+                        The purpose of this project was to solve a difficult (NP-Hard) problem. The tool uses 
                         a modified version of the Branch and Bound A* algorithm. This tool also comes with a Graphical 
                         User Interface to help with user interaction and visualization.
                     </Typography>
