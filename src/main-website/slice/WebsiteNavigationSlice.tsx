@@ -5,6 +5,7 @@ import { EWebsitePages } from '../WebsiteTypes'
 // Define a type for the slice state
 export interface NavigationState {
   view: EWebsitePages
+  theme: Theme
 }
 
 // Define the initial state using that type
@@ -23,6 +24,12 @@ export const NavigationSlice = createSlice({
         view: action.payload,
       }
     },
+    toggleTheme: (state) =>  {
+      return {
+        ...state,
+        theme: state.theme === 'light' ? 'dark' : 'light',
+      }
+    }
   }
 })
 

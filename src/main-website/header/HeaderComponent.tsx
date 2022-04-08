@@ -20,6 +20,7 @@ export interface IHeaderProps {
 function HeaderComponent(props: IHeaderProps) {
     const loadWithDarkTheme = useAppSelector(state => state.theme.theme) === 'dark';
     const dispatch = useAppDispatch()
+	const theme = useAppSelector(state  => state.navigation.theme);
 
     return(
         <HideOnScroll {...props}>
