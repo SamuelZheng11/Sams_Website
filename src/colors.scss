@@ -1,5 +1,26 @@
-$background-white: #FBFCF8;
-$background-blue: #C0E1F7;
+@mixin lightmode() {
+    --text-color: #111;
+    --link-color: #0000EE;
+    --link-color-visited: #551A8B;
+    --background-color-base-1: #FBFCF8;
+    --background-color-base-2: #D2D7D3;
+    --background-color-accent: #C0E1F7;
+}
+@mixin darkmode() {
+    --text-color: #F0F0F0;
+    --link-color: #809FFF;
+    --link-color-visited: #FFDF80;
+    --background-color-base-1: #191919;
+    --background-color-base-2: #3F3351;
+    --background-color-accent: #5B2C76;
+}
+
+$background-color-base-1: var(--background-color-base-1);
+$background-color-base-2: var(--background-color-base-2);
+$background-color-accent: var(--background-color-accent);
+$link-color-visited: var(--link-color-visited);
+$link-color: var(--link-color);
+$text-color: var(--text-color);
 
 $scroll-bar-thumb-color: #888888;
 $scroll-bar-track-color: #b3b1b1;

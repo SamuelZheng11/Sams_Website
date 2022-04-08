@@ -1,19 +1,21 @@
 import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
+import { useAppDispatch, useAppSelector } from '../WebsiteHooks';
 
 import Layout from '../../core/layout/LayoutComponent';
 import { EWebsitePages } from '../WebsiteTypes';
-import { scrollTo } from '../WebsiteNavigationSlice';
-import { useAppDispatch } from '../WebsiteHooks';
+import { scrollTo, toggleTheme } from '../WebsiteNavigationSlice';
+import { ThemeSwitch } from './HeaderThemeSwitchComponent';
 import { CONTACT_HEADER_TITLE, EDUCATION_HEADER_TITLE, EMPLOYMENT_HEADER_TITLE, HEADER_WEBSITE_NAME, HOME_HEADER_TITLE, PROJECT_HEADER_TITLE } from './HeaderConstants';
 
 import './HeaderComponent.scss'
 
 function HeaderComponent() {
     const dispatch = useAppDispatch()
+	const theme = useAppSelector(state  => state.navigation.theme);
 
     return(
-        <AppBar color="default" className="header" >
+        <AppBar className="header" >
             <Layout orientation='horizontal' spacing='fill'>
                 <Typography variant="h5">
                     {HEADER_WEBSITE_NAME}
@@ -35,6 +37,8 @@ function HeaderComponent() {
                     <Typography className="header-nav-option" variant="h6" onClick={() => dispatch(scrollTo(EWebsitePages.contact))}>
                         {CONTACT_HEADER_TITLE}
                     </Typography>
+
+                    <ThemeSwitch onChange={() => dispatch(toggleTheme())} sx={{ m: 1 }} />
                 </Layout>
             </Layout>
         </AppBar>

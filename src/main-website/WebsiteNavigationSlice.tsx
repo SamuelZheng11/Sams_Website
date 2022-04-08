@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EWebsitePages } from './WebsiteTypes'
+import { EWebsitePages, Theme } from './WebsiteTypes'
 
 // Define a type for the slice state
 export interface NavigationState {
   view: EWebsitePages
+  theme: Theme
 }
 
 // Define the initial state using that type
 const initialState = {
-  view: EWebsitePages.home
+  view: EWebsitePages.home,
+  theme: 'light',
 } as NavigationState
 
 export const NavigationSlice = createSlice({
@@ -21,10 +23,16 @@ export const NavigationSlice = createSlice({
         view: action.payload,
       }
     },
+    toggleTheme: (state) =>  {
+      return {
+        ...state,
+        theme: state.theme === 'light' ? 'dark' : 'light',
+      }
+    }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { scrollTo } = NavigationSlice.actions
+export const { scrollTo, toggleTheme } = NavigationSlice.actions
 
 export default NavigationSlice.reducer
