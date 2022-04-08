@@ -65,11 +65,11 @@ function Website() {
 				<div ref={employmentRef}>
 					<EmploymentComponent></EmploymentComponent>
 				</div>
-				<div ref={educationRef}>
-					<EducationComponent></EducationComponent>
-				</div>
 				<div ref={projectRef}>
 					<ProjectComponent></ProjectComponent>
+				</div>
+				<div ref={educationRef}>
+					<EducationComponent></EducationComponent>
 				</div>
 				<div ref={contactRef}>
 					<ContactComponent></ContactComponent>

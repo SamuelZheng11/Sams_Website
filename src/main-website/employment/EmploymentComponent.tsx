@@ -10,7 +10,7 @@ const EMPLOYMENT_TITLE = 'Employment History';
 
 function EmploymentComponent() {
     return(
-        <Layout orientation='vertical' className="employment">
+        <Layout className="employment">
             <div className="employment-title-container">
                 <Typography variant='h3'>
                     {EMPLOYMENT_TITLE}
