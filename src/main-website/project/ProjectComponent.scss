@@ -1,7 +1,7 @@
 @import 'src/variables.scss';
 
 .project {
-    > * {
+    > div > * {
         margin-bottom: $spacing-large;
     }
 
