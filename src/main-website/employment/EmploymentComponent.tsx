@@ -25,7 +25,7 @@ function EmploymentComponent() {
             <LoadingSpinnerComponent loaded={contentLoaded}>
                 <div>
                     {employments?.map(employment => (
-                        <Panel className="employment-card">
+                        <Panel className="employment-card" key={employment.employer}>
                             <Layout orientation='horizontal'>
                                 <a href={employment.employerWebsite}>
                                     <Layout className="employment-card-title-container" orientation='horizontal'>
@@ -37,7 +37,7 @@ function EmploymentComponent() {
                             </Layout>
 
                             {employment.summaries.map(summary => (
-                                <Typography variant="body1" className="employment-card-body-text">
+                                <Typography variant="body1" className="employment-card-body-text" key={summary.length}>
                                     {summary}
                                 </Typography>
                             ))}

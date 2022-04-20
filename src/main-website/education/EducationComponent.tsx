@@ -29,7 +29,7 @@ function EducationComponent() {
             <LoadingSpinnerComponent loaded={contentLoaded}>
                 <div>
                     {educations?.map(education => (
-                            <Panel className='education-card'>
+                            <Panel className='education-card' key={education.institutionShortHand}>
                                 <Layout orientation='horizontal'>
                                     <a href={education.institutionWebsite}>
                                         <Layout className="education-card-title-container" orientation='horizontal'>
@@ -41,7 +41,7 @@ function EducationComponent() {
                                 </Layout>
 
                                 {education?.summaries?.map(summary => (
-                                    <Typography variant="body1" className="education-card-body-text">
+                                    <Typography variant="body1" className="education-card-body-text" key={summary.length}>
                                         {summary}
                                     </Typography>
                                 ))}

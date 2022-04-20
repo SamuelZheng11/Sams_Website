@@ -28,7 +28,7 @@ function Website() {
 	const [websiteRef, homeRef, aboutRef, employmentRef, educationRef, projectRef, contactRef] = [createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>(), createRef<HTMLDivElement>()];
 
 	useEffect(() => {
-		checkViewToScrollTo()
+		checkViewToScrollTo(view)
 	}, [view]);
 
 	useEffect(() => {
@@ -74,7 +74,7 @@ function Website() {
 		}, 1000);
 	}
 
-	const checkViewToScrollTo = () => {
+	const checkViewToScrollTo = (view: EWebsitePages) => {
 		switch(view) {
 			case EWebsitePages.home: 
 				homeRef.current?.scrollIntoView({behavior: "smooth"});

@@ -34,7 +34,7 @@ function ProjectComponent() {
             <LoadingSpinnerComponent loaded={contentLoaded}>
                 <div>
                     {projects?.map(project =>(
-                        <Panel className="project-card">
+                        <Panel className="project-card" key={project.projectName}>
                             <Layout className="project-card-title-container" orientation='horizontal'>
                                 <Typography variant="h4">{project.projectName}</Typography>
                                 <Typography variant="subtitle1">{getYearRangeBetween(project.startDate, project.endDate)}</Typography>
@@ -42,11 +42,10 @@ function ProjectComponent() {
             
                             <div className="project-card-body">
                                 {project.summaries.map(summary => (
-                                    <Typography variant="body1" className="project-card-body-text">
+                                    <Typography variant="body1" className="project-card-body-text" key={summary.length}>
                                         {summary}
                                     </Typography>
                                 ))}
-                                
             
                                 <Typography variant="body1" className="project-card-body-text">
                                     {getProjectRepoText(project.projectRepositoryUrl)}
