@@ -1,4 +1,3 @@
-import './HomePageComponent.scss'
 import IntroComponent from './intro/IntroComponent';
 
 function HomePageComponent() {
