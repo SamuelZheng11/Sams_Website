@@ -1,10 +1,10 @@
-import { ReactElement } from "react"
 import { TSize } from "../CoreTypes"
+
 import "./PanelComponent.scss"
 
 export interface PanelProps {
     className?: string | string[],
-    children?: ReactElement | ReactElement[],
+    children?: any,
     size?: TSize
 }
 

@@ -2,10 +2,11 @@
 
 .education {
     &-title-container {
-        margin-bottom: $spacing-large;
+        margin-bottom: $spacing-xx-large;
     }
 
     &-card{
+        text-align: left;
         padding: $spacing-x-large;
 
         &-title-container {            
@@ -21,14 +22,12 @@
             }
         }
 
-        &-body-text {
-            text-align: left;
+        &-body-text{
             padding-bottom: $spacing-xx-small;
-        }
 
-        
-        :last-child {
-            padding-bottom: 0;
+            > ul {
+                margin: $spacing-xx-small 0 0 0;
+            }
         }
     }
 }

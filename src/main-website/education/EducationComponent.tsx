@@ -2,12 +2,22 @@ import { Typography } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 
 import Layout from '../../core/layout/LayoutComponent';
-import './EducationComponent.scss'
 import Panel from '../../core/panel/PanelComponent';
+import { useAppSelector } from '../WebsiteHooks';
+import LoadingSpinnerComponent from '../../core/loading/LoadingSpinnerComponent';
+import { getYearRangeBetween } from '../../core/date.functions';
+import { EDUCATION_TITLE } from './EducationConstants';
 
-const EDUCATION_TITLE = 'Education';
+import './EducationComponent.scss'
 
 function EducationComponent() {
+    const contentLoaded = useAppSelector(state => state.information.websiteInfoLoaded);
+    const educations = useAppSelector(state => state.information.educations);
+
+    const getAchievementTitle = (educationInstituteShortHand: string) => {
+        return `At ${educationInstituteShortHand} I achieved the awards/milestones:`;
+    }
+
     return(
         <div className='education'>
             <div className="education-title-container">
@@ -16,37 +26,40 @@ function EducationComponent() {
                 </Typography>
             </div>
 
-            <Panel className='education-card'>
-                <Layout orientation='horizontal'>
-                    <a href="https://www.auckland.ac.nz/en/engineering.html">
-                        <Layout className="education-card-title-container" orientation='horizontal'>
-                            <Typography variant="h4">University of Auckland</Typography>
-                            <Typography variant="subtitle1">(2016 - 2019)</Typography>
-                            <LaunchIcon></LaunchIcon>
-                        </Layout>
-                    </a>
-                </Layout>
+            <LoadingSpinnerComponent loaded={contentLoaded}>
+                <div>
+                    {educations?.map(education => (
+                            <Panel className='education-card'>
+                                <Layout orientation='horizontal'>
+                                    <a href={education.institutionWebsite}>
+                                        <Layout className="education-card-title-container" orientation='horizontal'>
+                                            <Typography variant="h4">{education.institutionName}</Typography>
+                                            <Typography variant="subtitle1">{getYearRangeBetween(education.startDate, education.endDate)}</Typography>
+                                            <LaunchIcon></LaunchIcon>
+                                        </Layout>
+                                    </a>
+                                </Layout>
 
-                <Typography variant="body1" className="education-card-body-text">
-                    In 2019 I graduated from the University of Auckland Specializing in Software Engineering.
-                </Typography>
+                                {education?.summaries?.map(summary => (
+                                    <Typography variant="body1" className="education-card-body-text">
+                                        {summary}
+                                    </Typography>
+                                ))}
 
-                <Typography variant="body1" className="education-card-body-text">
-                    During my tenure I studied a variety of subjects ranging from operating systems, software 
-                    design and architecture, mobile security, algorithm and data structures, software development methodologies, 
-                    image processing and artificial intelligence
-                </Typography>
-                
-                <Typography variant="body1" className="education-card-body-text">
-                    At UoA I achieved the awards/milestones:
-                    <ul>
-                        <li> Dean's Honours List class of 2019 (Top 5% of their year of study) </li>
-                        <li> First in class SOFTENG 762: Robotics Process Automation </li>
-                        <li> First Class Honours </li>
-                        <li> GPA of 7.3/9.0 </li>
-                    </ul>
-                </Typography>
-            </Panel>
+                                {/* using "component={'span'}" to suppress error "<ul> cannot appear as a child of <p>" 
+                                as material Typography by default wraps everything in using <p>*/}
+                                <Typography component={'span'} variant="body1" className="education-card-body-text">
+                                    {getAchievementTitle(education.institutionShortHand)}
+                                    <ul>
+                                        {education?.achievements?.map(achievement => (
+                                            <li>{achievement}</li>
+                                        ))}
+                                    </ul>
+                                </Typography>
+                            </Panel>
+                        ))}
+                </div>
+            </LoadingSpinnerComponent>
         </div>
     );
 }
