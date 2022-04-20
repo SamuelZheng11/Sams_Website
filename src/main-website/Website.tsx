@@ -43,35 +43,29 @@ function Website() {
 
 	const loadWebsiteInfo = () => {
 		const backendUri = 'https://ec2-52-63-58-171.ap-southeast-2.compute.amazonaws.com';
-
-
-		axios.get(`${backendUri}/Education`)
+		Promise.allSettled([
+			axios.get(`${backendUri}/Bio`)
+			.then(response => {
+				const bioResponse = response.data[0] as IBio
+				dispatch(setBio(bioResponse))
+			}), 
+			axios.get(`${backendUri}/Education`)
 			.then(response => {
 				const educationResponse = response.data as IEducation[]
 				dispatch(setEducations(educationResponse))
-			});
-
-		axios.get(`${backendUri}/Project`)
-			.then(response => {
-				const projectResponse = response.data as IProject[]
-				dispatch(setProjects(projectResponse))
-			});
-
-		axios.get(`${backendUri}/Bio`)
-		.then(response => {
-			const bioResponse = response.data[0] as IBio
-			dispatch(setBio(bioResponse))
-		});
-
-		axios.get(`${backendUri}/Employment`)
+			}), 
+			axios.get(`${backendUri}/Employment`)
 			.then(response => {
 				const employmentResponse = response.data as IEmployment[]
 				dispatch(setEmployments(employmentResponse))
-			});
-
-		setTimeout(() => {
+			}), 
+			axios.get(`${backendUri}/Project`).then(response => {
+				const projectResponse = response.data as IProject[]
+				dispatch(setProjects(projectResponse))
+			})
+		]).then(() => {
 			dispatch(setWebsiteInfoLoaded(true));
-		}, 1000);
+		})
 	}
 
 	const checkViewToScrollTo = (view: EWebsitePages) => {
