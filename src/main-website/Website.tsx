@@ -42,7 +42,7 @@ function Website() {
 	useEffect( () => () => subscriptions.forEach(subscription => subscription.unsubscribe()), [] );
 
 	const loadWebsiteInfo = () => {
-		const backendUri = 'http://ec2-52-63-58-171.ap-southeast-2.compute.amazonaws.com';
+		const backendUri = 'https://ec2-52-63-58-171.ap-southeast-2.compute.amazonaws.com';
 		Promise.allSettled([
 			axios.get(`${backendUri}/Bio`)
 			.then(response => {
