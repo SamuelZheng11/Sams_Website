@@ -1,8 +1,6 @@
 import { Typography } from "@mui/material";
-
-import { introMessage, name, welcomeMessage } from "./IntroConstants";
-
 import './IntroComponent.scss'
+import { introMessage, name, welcomeMessage } from "./IntroConstants";
 
 function IntroComponent() {
     return(
