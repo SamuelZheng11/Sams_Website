@@ -1,13 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import informationReducer from './slice/WebsiteInformationSlice'
-import themeReducer from './slice/WebsiteThemeSlice'
-import navigationReducer from './slice/WebsiteNavigationSlice'
+import navigationReducer from './WebsiteNavigationSlice'
 
 const appStore = configureStore({
   reducer: {
-    navigation: navigationReducer,
-    information: informationReducer,
-    theme: themeReducer
+    navigation: navigationReducer
   }
 })
 

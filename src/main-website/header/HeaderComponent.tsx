@@ -6,10 +6,9 @@ import { useAppDispatch } from '../WebsiteHooks';
 import Layout from '../../core/layout/LayoutComponent';
 import HideOnScroll from './hide-on-scroll/HideOnScrollComponent';
 import { EWebsitePages } from '../WebsiteTypes';
-import { scrollTo } from '../slice/WebsiteNavigationSlice';
+import { scrollTo, toggleTheme } from '../WebsiteNavigationSlice';
 import { ThemeSwitch } from './assets/HeaderThemeSwitchComponent';
 import { CONTACT_HEADER_TITLE, EDUCATION_HEADER_TITLE, EMPLOYMENT_HEADER_TITLE, HEADER_WEBSITE_NAME, HOME_HEADER_TITLE, PROJECT_HEADER_TITLE } from './HeaderConstants';
-import { toggleTheme } from '../slice/WebsiteThemeSlice';
 
 import './HeaderComponent.scss'
 
