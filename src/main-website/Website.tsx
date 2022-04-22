@@ -42,7 +42,7 @@ function Website() {
 	useEffect( () => () => subscriptions.forEach(subscription => subscription.unsubscribe()), [] );
 
 	const loadWebsiteInfo = () => {
-		const backendUri = 'https://websiteBELoadBalancer-877650330.ap-southeast-2.elb.amazonaws.com';
+		const backendUri = 'https://api.samuelzheng.com';
 		Promise.allSettled([
 			axios.get(`${backendUri}/Bio`)
 			.then(response => {
