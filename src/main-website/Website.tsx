@@ -41,6 +41,9 @@ function Website() {
 
 	useEffect( () => () => subscriptions.forEach(subscription => subscription.unsubscribe()), [] );
 
+	// Ideally I would put this into a service or into its own file
+	// At the moment this is the only place that I am calling an endpoint
+	// So at the moment no point putting it elsewhere
 	const loadWebsiteInfo = () => {
 		const backendUri = 'https://api.samuelzheng.com';
 		Promise.allSettled([
