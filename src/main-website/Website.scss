@@ -7,13 +7,6 @@
       @include darkmode();
   }
 
-  @media (prefers-color-scheme: dark) {
-      @include darkmode();
-      &.is_inverted {
-          @include lightmode();
-      }
-  }
-
   min-height: 100vh;
   font-family: 'MontserratLight';
 
