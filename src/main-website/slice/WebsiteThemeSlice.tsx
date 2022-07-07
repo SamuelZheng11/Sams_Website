@@ -9,7 +9,7 @@ export interface ThemeState {
 
 // Define the initial state using that type
 const initialState = {
-  theme: 'light',
+  theme: window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
 } as ThemeState
 
 export const ThemeSlice = createSlice({

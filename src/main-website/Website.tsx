@@ -32,7 +32,7 @@ function Website() {
 	}, [view]);
 
 	useEffect(() => {
-		theme !== 'light' ? websiteRef.current?.classList.add('is_inverted') : websiteRef.current?.classList.remove('is_inverted')
+		theme === 'light' ? websiteRef.current?.classList.remove('is_inverted') : websiteRef.current?.classList.add('is_inverted');
 	}, [theme]);
 
 	useEffect(() => {

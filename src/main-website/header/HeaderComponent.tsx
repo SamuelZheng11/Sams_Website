@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import { useAppDispatch } from '../WebsiteHooks';
+import { useAppDispatch, useAppSelector } from '../WebsiteHooks';
 
 import Layout from '../../core/layout/LayoutComponent';
 import HideOnScroll from './hide-on-scroll/HideOnScrollComponent';
@@ -18,6 +18,7 @@ export interface IHeaderProps {
 }
 
 function HeaderComponent(props: IHeaderProps) {
+    const loadWithDarkTheme = useAppSelector(state => state.theme.theme) === 'dark';
     const dispatch = useAppDispatch()
 
     return(
@@ -45,7 +46,7 @@ function HeaderComponent(props: IHeaderProps) {
                             {CONTACT_HEADER_TITLE}
                         </Typography>
 
-                        <ThemeSwitch onChange={() => dispatch(toggleTheme())} sx={{ m: 1 }} />
+                        <ThemeSwitch defaultChecked={loadWithDarkTheme} onChange={() => dispatch(toggleTheme())} sx={{ m: 1 }} />
                     </Layout>
                 </Layout>
             </AppBar>
