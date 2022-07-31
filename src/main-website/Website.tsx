@@ -45,26 +45,54 @@ function Website() {
 	// At the moment this is the only place that I am calling an endpoint
 	// So at the moment no point putting it elsewhere
 	const loadWebsiteInfo = () => {
-		const backendUri = 'https://api.samuelzheng.com';
+		let backendUri = process.env.REACT_APP_BACKEND_URI;
+		let s3Uri = process.env.REACT_APP_S3_URI;
+		
 		Promise.allSettled([
 			axios.get(`${backendUri}/Bio`)
 			.then(response => {
 				const bioResponse = response.data[0] as IBio
 				dispatch(setBio(bioResponse))
+			}).catch(() => {
+				console.warn("Contacting S3 Backups for Bio");
+				axios.get(`${s3Uri}/bio.json`)
+				.then(response => {
+					const bioResponse = response.data as IBio
+					dispatch(setBio(bioResponse))
+				});
 			}), 
-			axios.get(`${backendUri}/Education`)
-			.then(response => {
+			axios.get(`${backendUri}/Education`).then(response => {
 				const educationResponse = response.data as IEducation[]
 				dispatch(setEducations(educationResponse))
+			}).catch(() => {
+				console.warn("Contacting S3 Backups for Education");
+				axios.get(`${s3Uri}/education.json`)
+				.then(response => {
+					const educationResponse = response.data as IEducation[]
+					dispatch(setEducations(educationResponse))
+				});
 			}), 
-			axios.get(`${backendUri}/Employment`)
-			.then(response => {
+			axios.get(`${backendUri}/Employment`).then(response => {
 				const employmentResponse = response.data as IEmployment[]
 				dispatch(setEmployments(employmentResponse))
+			}).catch(() => {
+				console.warn("Contacting S3 Backups for Employment");
+				axios.get(`${s3Uri}/employment.json`)
+				.then(response => {
+					const employmentResponse = response.data as IEmployment[]
+					dispatch(setEmployments(employmentResponse))
+				});
 			}), 
 			axios.get(`${backendUri}/Project`).then(response => {
 				const projectResponse = response.data as IProject[]
 				dispatch(setProjects(projectResponse))
+			}).catch(() => {
+				console.warn("Contacting S3 Backups for Projects");
+				axios.get(`${s3Uri}/project.json`)
+				.then(response => {
+					const projectResponse = response.data as IProject[]
+					dispatch(setProjects(projectResponse))
+				});
 			})
 		]).then(() => {
 			dispatch(setWebsiteInfoLoaded(true));

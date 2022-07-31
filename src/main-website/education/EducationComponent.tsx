@@ -52,7 +52,7 @@ function EducationComponent() {
                                     {getAchievementTitle(education.institutionShortHand)}
                                     <ul>
                                         {education?.achievements?.map(achievement => (
-                                            <li>{achievement}</li>
+                                            <li key={achievement.length}>{achievement}</li>
                                         ))}
                                     </ul>
                                 </Typography>
