@@ -1,0 +1,17 @@
+@import 'src/colors.scss';
+@import 'src/variables.scss';
+
+.api-status-icon {
+    &-text {
+        padding-left: $spacing-x-small;
+    }
+
+    .online {
+        color: $api-online-status-color
+    }
+    
+    .offline {
+        color: $api-offline-status-color
+    }
+}
+
