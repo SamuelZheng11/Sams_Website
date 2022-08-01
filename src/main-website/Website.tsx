@@ -12,7 +12,7 @@ import EducationComponent from './education/EducationComponent';
 import ProjectComponent from './project/ProjectComponent';
 import AboutComponent from './about/AboutComponent';
 import FooterComponent from './footer/FooterComponent';
-import { setBio, setEducations, setEmployments, setProjects, setWebsiteInfoLoaded } from './slice/WebsiteInformationSlice';
+import { setApiOnline, setBio, setEducations, setEmployments, setProjects, setWebsiteInfoLoaded } from './slice/WebsiteInformationSlice';
 import { IEmployment } from './employment/EmploymentTypes';
 import { IProject } from './project/ProjectTypes';
 import { IEducation } from './education/EducationTypes';
@@ -60,7 +60,9 @@ function Website() {
 					const bioResponse = response.data as IBio
 					dispatch(setBio(bioResponse))
 				});
+				return Promise.reject("Failed to get to contact Live API for Bio");
 			}), 
+
 			axios.get(`${backendUri}/Education`).then(response => {
 				const educationResponse = response.data as IEducation[]
 				dispatch(setEducations(educationResponse))
@@ -71,7 +73,9 @@ function Website() {
 					const educationResponse = response.data as IEducation[]
 					dispatch(setEducations(educationResponse))
 				});
+				return Promise.reject("Failed to get to contact Live API for Education");
 			}), 
+
 			axios.get(`${backendUri}/Employment`).then(response => {
 				const employmentResponse = response.data as IEmployment[]
 				dispatch(setEmployments(employmentResponse))
@@ -82,20 +86,29 @@ function Website() {
 					const employmentResponse = response.data as IEmployment[]
 					dispatch(setEmployments(employmentResponse))
 				});
+				return Promise.reject("Failed to get to contact Live API for Employment");
 			}), 
+
 			axios.get(`${backendUri}/Project`).then(response => {
 				const projectResponse = response.data as IProject[]
 				dispatch(setProjects(projectResponse))
-			}).catch(() => {
+			}).catch((onReject) => {
 				console.warn("Contacting S3 Backups for Projects");
 				axios.get(`${s3Uri}/project.json`)
 				.then(response => {
 					const projectResponse = response.data as IProject[]
 					dispatch(setProjects(projectResponse))
 				});
+				return Promise.reject("Failed to get to contact Live API for Projects");
 			})
-		]).then(() => {
+		]).then((results) => {
 			dispatch(setWebsiteInfoLoaded(true));
+
+			// TODO: need to create health checkpoint on api
+			const allRequestsFulfilled = !results.some(r => r.status === 'rejected')
+			dispatch(setApiOnline(allRequestsFulfilled));
+		}).catch(() => {
+			debugger;
 		})
 	}
 

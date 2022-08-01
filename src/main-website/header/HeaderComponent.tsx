@@ -12,6 +12,7 @@ import { CONTACT_HEADER_TITLE, EDUCATION_HEADER_TITLE, EMPLOYMENT_HEADER_TITLE, 
 import { toggleTheme } from '../slice/WebsiteThemeSlice';
 
 import './HeaderComponent.scss'
+import CustomIcon from '../../core/custom-icons/CustomIconComponent';
 
 export interface IHeaderProps {
     children?: ReactElement;
@@ -19,6 +20,7 @@ export interface IHeaderProps {
 
 function HeaderComponent(props: IHeaderProps) {
     const loadWithDarkTheme = useAppSelector(state => state.theme.theme) === 'dark';
+    const apiOnline = useAppSelector(state => state.information.apiOnline);
     const dispatch = useAppDispatch()
 
     return(
@@ -47,6 +49,7 @@ function HeaderComponent(props: IHeaderProps) {
                         </Typography>
 
                         <ThemeSwitch defaultChecked={loadWithDarkTheme} onChange={() => dispatch(toggleTheme())} sx={{ m: 1 }} />
+                        <CustomIcon type="api-status" active={apiOnline}></CustomIcon>
                     </Layout>
                 </Layout>
             </AppBar>

@@ -8,6 +8,7 @@ import { IEmployment } from '../employment/EmploymentTypes'
 // Define a type for the slice state
 export interface InformationState {
   websiteInfoLoaded: boolean,
+  apiOnline: boolean;
   educations?: IEducation[],
   projects?: IProject[],
   bio?: IBio,
@@ -17,6 +18,7 @@ export interface InformationState {
 // Define the initial state using that type
 const initialState = {
   websiteInfoLoaded: false,
+  apiOnline: false,
 } as InformationState
 
 export const InformationSlice = createSlice({
@@ -27,6 +29,12 @@ export const InformationSlice = createSlice({
       return {
         ...state,
         websiteInfoLoaded: action.payload
+      }
+    },
+    setApiOnline: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        apiOnline: action.payload
       }
     },
     setEducations: (state, action: PayloadAction<IEducation[]>) => {
@@ -59,6 +67,7 @@ export const InformationSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   setWebsiteInfoLoaded,
+  setApiOnline,
   setEducations,
   setProjects,
   setBio,
