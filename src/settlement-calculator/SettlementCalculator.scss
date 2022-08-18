@@ -1,0 +1,14 @@
+@import 'src/variables.scss';
+@import 'src/colors.scss';
+
+.settlement-calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-person {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
