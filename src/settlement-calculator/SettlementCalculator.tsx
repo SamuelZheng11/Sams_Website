@@ -118,8 +118,8 @@ export default function SettlementCalculator() {
 				<Button variant="contained" onClick={() => dispatch(setDebts(calculateDebts(people)))}>Calculate</Button>
 			</div>
 			<div className='settlement-calculator-debt-container'>
-			{people?.length && (debts !== undefined && (debts.length !== 0 ? debts.map((debt: Debt) => (
-				<div className='settlement-calculator-debt'>
+			{people?.length && (debts !== undefined && (debts.length !== 0 ? debts.map((debt: Debt, i) => (
+				<div key={i} className='settlement-calculator-debt'>
 					<span style={{color: debt.debitor.color}}>{debt.debitor.fullName}</span> (Id: {debt.debitor.id}) owes <span style={{color: debt.creditor.color}}>{debt.creditor.fullName}</span> (Id: {debt.creditor.id}) ${debt.debtAmount}
 				</div>
 			)): <div className='settlement-calculator-debt'>All debts are already settled</div>))}

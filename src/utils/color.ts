@@ -1,4 +1,4 @@
-// Written by GPT
+// Written by ChatGPT
 export function getRandomHexColor(): string {
     const hexChars = "0123456789ABCDEF";
     let hexcode = "#";
