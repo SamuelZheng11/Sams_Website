@@ -2,13 +2,79 @@
 @import 'src/colors.scss';
 
 .settlement-calculator {
+  min-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: $size-small;
+  margin-top: $spacing-medium;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  &-buttons-container {
+    margin-top: $spacing-medium;
+    margin-bottom: $spacing-medium;
+    gap: $spacing-medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
   &-person {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: $size-small;
+    align-items: center;
+    border: 1px lightgray;
+
+    &-button-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: $spacing-xx-small;
+    }
+
+    &-delete-button {
+      :hover {
+        fill: red;
+      }
+    }
+
+    &-edit-button {
+      :hover {
+        fill: #1976d2;
+      }
+    }
+  }
+
+  &-debt-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small;
+    justify-content: center;
+  }
+
+  &-debt {
+    text-align: center;
+  }
+}
+
+.modal-person-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-medium;
+
+  &-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing-xxx-small;
   }
 }
