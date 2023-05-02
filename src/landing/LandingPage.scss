@@ -1,0 +1,44 @@
+@import 'src/variables.scss';
+@import 'src/colors.scss';
+
+.landing-page {
+  @include lightmode();
+  &.is_inverted {
+      @include darkmode();
+  }
+
+  min-height: 100vh;
+  font-family: 'MontserratLight';
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: calc(10px + 2vmin);
+  text-align: center;
+
+  background: $background-color-base-1;
+  background: linear-gradient(90deg, $background-color-base-1 80%, $background-color-accent 100%);
+  background: -moz-linear-gradient(90deg, $background-color-base-1 80%, $background-color-accent 100%);
+  background: -webkit-linear-gradient(90deg, $background-color-base-1 80%, $background-color-accent 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$background-color-base-1", endColorstr="$background-color-accent", GradientType=1 );
+
+  color: $text-color;
+  
+  a:link {
+    color: $link-color;
+  }
+
+  a:visited {
+    color: $link-color-visited;
+  }
+
+  &-body {
+    > * {
+      padding: $spacing-xxx-large 0 $spacing-xxx-large 0;
+      justify-content: center;
+      display: flex;
+    }
+  }
+}

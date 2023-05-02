@@ -1,19 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.scss';
 import './variables.scss'
 import './material-overrides.scss';
-import Website from './main-website/Website';
+import LandingPage from './landing/LandingPage';
 import reportWebVitals from './reportWebVitals';
-import store from './main-website/WebsiteStore'
+import landingPageStore from './landing/LandingPageStore'
+import settlementStore from './settlement-calculator/SettlementCalculatorStore'
 import { Provider } from 'react-redux'
+import SettlementCalculator from './settlement-calculator/SettlementCalculator';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Website />
-    </Provider>
+      <BrowserRouter>
+        <Routes>
+            <Route path="/" element={
+              <Provider store={landingPageStore}>
+                <LandingPage />
+              </Provider>
+            }/>
+
+          <Route path="/settlements" element={
+            <Provider store={settlementStore}>
+              <SettlementCalculator />
+            </Provider>
+          }/>
+        </Routes>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
