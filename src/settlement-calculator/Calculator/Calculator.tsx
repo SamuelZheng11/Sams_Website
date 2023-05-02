@@ -1,41 +1,49 @@
 import { Debt, Person } from "../slice/SettlementSlice";
 
-// Code written by ChatGPT
+// Partially written by ChatGPT
 export function calculateDebts(people: Person[]) {
-    let totalAmount = 0;
-    let mutablePeople: Person[] = JSON.parse(JSON.stringify(people));
-    for (const person of mutablePeople) {
-      totalAmount += person.amount;
-    }
-  
-    const averageAmount = totalAmount / mutablePeople.length;
-  
-    const debts: Debt[] = [];
-  
-    for (const person of mutablePeople) {
-      if (person.amount > averageAmount) {
-        const debtors = mutablePeople.filter(
-          (p) => p.amount < averageAmount && p !== person
-        ).map(p => p);
+  const debts: Debt[] = [];
 
-        for (const debtor of debtors) {
-          const amountToTransfer = Math.min(
-            person.amount - averageAmount,
-            averageAmount - debtor.amount
-          );
-          if (amountToTransfer > 0) {
-            debtor.amount += amountToTransfer;
-            person.amount -= amountToTransfer;
-            debts.push({
-              debitor: debtor,
-              creditor: person,
-              debtAmount: amountToTransfer.toFixed(2),
-            });
-          }
-        }
+  if (people.length < 2) return debts;
+
+  for (let i = 0; i < people.length; i++) {
+    for (let j = i; j < people.length; j++) {
+      if (i === j) continue;
+
+      // If this is 0 then neither owe each other money
+      const transaction = (people[i].amount/people.length) - (people[j].amount/people.length)
+
+      if (transaction > 0) {
+        // person j owes person i
+        debts.push({
+          debitor: people[j],
+          creditor: people[i],
+          debtAmount: transaction.toFixed(2)
+        });
+      } else if (transaction < 0) {
+        // person i owes person j
+        debts.push({
+          debitor: people[i],
+          creditor: people[j],
+          debtAmount: Math.abs(transaction).toFixed(2)
+        });
       }
     }
-  
-    return debts;
   }
-  
+
+  // Sort based on debitor id first then creditor id
+  debts.sort((a: Debt, b: Debt) => {
+    if (a.debitor.id < b.debitor.id) {
+      return -1;
+    } else if (a.debitor.id === b.debitor.id) {
+      if (a.creditor.id < b.creditor.id) {
+        return -1
+      } 
+
+      return 0;
+    }
+    return 1;
+  });
+
+  return debts;
+}
