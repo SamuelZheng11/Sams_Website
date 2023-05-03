@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface Person {
-  fullName: string;
-  amount: number;
-  id: number;
-  color?: string;
+  fullName: string
+  amount: number
+  id: number
+  color?: string
 }
 
 export interface Debt {
-  creditor: Person;
-  debitor: Person;
-  debtAmount: string;
+  creditor: Person
+  debitor: Person
+  debtAmount: string
 }
 
 // Define a type for the slice state
@@ -32,6 +32,7 @@ export const SettlementSlice = createSlice({
       return {
         ...state,
         people: action.payload,
+        debts: action.payload.length === 0 ? undefined : state.debts,
       }
     },
     setDebts: (state, action: PayloadAction<Debt[]>) => {
@@ -40,11 +41,15 @@ export const SettlementSlice = createSlice({
         debts: action.payload,
       }
     },
-    setName: (state, action: PayloadAction<{id: number, fullName: string}>) => {
-      const updatedNames = state.people.map(person => {
-        if (person.id === action.payload.id) return {...person, fullName: action.payload.fullName};
-        
-        return person;
+    setName: (
+      state,
+      action: PayloadAction<{ id: number; fullName: string }>
+    ) => {
+      const updatedNames = state.people.map((person) => {
+        if (person.id === action.payload.id)
+          return { ...person, fullName: action.payload.fullName }
+
+        return person
       })
 
       return {
@@ -52,10 +57,14 @@ export const SettlementSlice = createSlice({
         people: updatedNames,
       }
     },
-    setAmount: (state, action: PayloadAction<{id: number, amount: number}>) => {
-      const updatedAmounts = state.people.map(person => {
-        if (person.id === action.payload.id) return {...person, amount: action.payload.amount};
-        return person;
+    setAmount: (
+      state,
+      action: PayloadAction<{ id: number; amount: number }>
+    ) => {
+      const updatedAmounts = state.people.map((person) => {
+        if (person.id === action.payload.id)
+          return { ...person, amount: action.payload.amount }
+        return person
       })
 
       return {
@@ -63,15 +72,11 @@ export const SettlementSlice = createSlice({
         people: updatedAmounts,
       }
     },
-  }
+  },
 })
 
 // Action creators are generated for each case reducer function
-export const {
-  setPeople,
-  setDebts,
-  setAmount,
-  setName,
-} = SettlementSlice.actions
+export const { setPeople, setDebts, setAmount, setName } =
+  SettlementSlice.actions
 
 export default SettlementSlice.reducer
