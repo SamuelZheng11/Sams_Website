@@ -10,7 +10,6 @@ export interface NavigationState {
 // Define the initial state using that type
 const initialState = {
   view: LandingPages.home,
-  theme: 'light',
 } as NavigationState
 
 export const NavigationSlice = createSlice({
@@ -23,12 +22,10 @@ export const NavigationSlice = createSlice({
         view: action.payload,
       }
     },
-  }
+  },
 })
 
 // Action creators are generated for each case reducer function
-export const {
-  scrollTo,
-} = NavigationSlice.actions
+export const { scrollTo } = NavigationSlice.actions
 
 export default NavigationSlice.reducer

@@ -2,11 +2,6 @@
 @import 'src/colors.scss';
 
 .landing-page {
-  @include lightmode();
-  &.is_inverted {
-      @include darkmode();
-  }
-
   min-height: 100vh;
   font-family: 'MontserratLight';
 

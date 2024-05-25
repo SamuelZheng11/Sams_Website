@@ -3,13 +3,20 @@
 
 .settlement-calculator {
   min-width: 600px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: $size-small;
-  margin-top: $spacing-medium;
+  color: $text-color;
+
+  background: $background-color-base-1;
+  background: linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
+  background: -moz-linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
+  background: -webkit-linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$background-color-base-1", endColorstr="$background-color-accent", GradientType=1 );
 
   &-header {
+    margin-top: $spacing-medium;
     display: flex;
     flex-direction: column;
     justify-content: center;

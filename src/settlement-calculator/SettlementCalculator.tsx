@@ -1,6 +1,4 @@
 import { Button, IconButton } from '@mui/material'
-import { useSettlementDispatch } from './SettlementCalculatorHooks'
-import { useSettlementSelector } from './SettlementCalculatorHooks'
 import {
   Person,
   setPeople,
@@ -17,11 +15,12 @@ import { calculateDebts } from './Calculator/Calculator'
 import { useState } from 'react'
 import Modal from '../core/modal/ModalComponent'
 import { getRandomHexColor } from '../utils/color'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 export default function SettlementCalculator() {
-  const dispatch = useSettlementDispatch()
-  const people = useSettlementSelector((state) => state.settlement.people)
-  const debts = useSettlementSelector((state) => state.settlement.debts)
+  const dispatch = useAppDispatch()
+  const people = useAppSelector((state) => state.settlement.people)
+  const debts = useAppSelector((state) => state.settlement.debts)
 
   const [modalOpen, setModalOpen] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -173,26 +172,27 @@ export default function SettlementCalculator() {
         </Button>
       </div>
       <div className="settlement-calculator-debt-container">
-        {people?.length &&
-          debts !== undefined &&
-          (debts.length !== 0 ? (
-            debts.map((debt: Debt, i) => (
-              <div key={i} className="settlement-calculator-debt">
-                <span style={{ color: debt.debitor.color }}>
-                  {debt.debitor.fullName}
-                </span>{' '}
-                (Id: {debt.debitor.id}) owes{' '}
-                <span style={{ color: debt.creditor.color }}>
-                  {debt.creditor.fullName}
-                </span>{' '}
-                (Id: {debt.creditor.id}) ${debt.debtAmount}
+        {people?.length
+          ? debts !== undefined &&
+            (debts.length !== 0 ? (
+              debts.map((debt: Debt, i) => (
+                <div key={i} className="settlement-calculator-debt">
+                  <span style={{ color: debt.debitor.color }}>
+                    {debt.debitor.fullName}
+                  </span>{' '}
+                  (Id: {debt.debitor.id}) owes{' '}
+                  <span style={{ color: debt.creditor.color }}>
+                    {debt.creditor.fullName}
+                  </span>{' '}
+                  (Id: {debt.creditor.id}) ${debt.debtAmount}
+                </div>
+              ))
+            ) : (
+              <div className="settlement-calculator-debt">
+                All debts are already settled
               </div>
             ))
-          ) : (
-            <div className="settlement-calculator-debt">
-              All debts are already settled
-            </div>
-          ))}
+          : undefined}
       </div>
     </div>
   )
