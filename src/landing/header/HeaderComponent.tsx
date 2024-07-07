@@ -15,7 +15,7 @@ import {
   HOME_HEADER_TITLE,
   PROJECT_HEADER_TITLE,
 } from './HeaderConstants'
-import { toggleTheme } from '../../Theme/slice/ThemeSlice'
+import { toggleTheme } from '../../theme/slice/ThemeSlice'
 
 import './HeaderComponent.scss'
 import CustomIcon from '../../core/custom-icons/CustomIconComponent'
