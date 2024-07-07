@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import themeReducer from './hello/slice/ThemeSlice'
+import themeReducer from './Theme/slice/ThemeSlice'
 import informationReducer from './landing/slice/LandingPageInformationSlice'
 import navigationReducer from './landing/slice/LandingPageNavigationSlice'
 import settlementReducer from './settlement-calculator/slice/SettlementSlice'
