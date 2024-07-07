@@ -1,14 +1,9 @@
-import React, { createRef, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './index.scss'
-import './variables.scss'
-import './material-overrides.scss'
+import { ThemeProvider } from './theme/theme'
 import LandingPage from './landing/LandingPage'
-import { Provider } from 'react-redux'
 import SettlementCalculator from './settlement-calculator/SettlementCalculator'
-import { ThemeProvider } from './Theme/theme'
 import { useAppSelector } from './hooks'
-import appStore from './AppStore'
+import { TravelLog } from './travel-log/TravelLog'
 
 export function App() {
   const theme = useAppSelector((state) => state.theme.theme)
@@ -19,6 +14,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/settlements" element={<SettlementCalculator />} />
+          <Route path="/travels" element={<TravelLog />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
