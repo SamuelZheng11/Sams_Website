@@ -16,7 +16,7 @@
     &-buttons-container {
         display: flex;
         flex-direction: row;
-        justify-content: end;
+        justify-content: flex-end;
         gap: $spacing-small;
         padding-top: $spacing-medium;
     }

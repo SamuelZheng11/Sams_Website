@@ -16,7 +16,7 @@ export function ThemeProvider({ children, theme }: Props) {
     theme === 'light'
       ? themeRef.current?.classList.remove('is_inverted')
       : themeRef.current?.classList.add('is_inverted')
-  }, [theme])
+  }, [theme, themeRef])
 
   return (
     <div className="theme" ref={themeRef}>
