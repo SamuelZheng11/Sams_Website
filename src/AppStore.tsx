@@ -3,6 +3,7 @@ import themeReducer from './theme/slice/ThemeSlice'
 import informationReducer from './landing/slice/LandingPageInformationSlice'
 import navigationReducer from './landing/slice/LandingPageNavigationSlice'
 import settlementReducer from './settlement-calculator/slice/SettlementSlice'
+import travelLogReducer from './travel-log/slice/TravelLogSlice'
 
 const appStore = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const appStore = configureStore({
     settlement: settlementReducer,
     navigation: navigationReducer,
     information: informationReducer,
+    travelLog: travelLogReducer,
   },
 })
 

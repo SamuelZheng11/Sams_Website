@@ -6,12 +6,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: $spacing-medium;
+    gap: $spacing-large;
+}
+
+.travel-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    padding-top: $spacing-medium;
 }
 
 .travel-map {
     height: 1080px;
-    width: 1920px;
+    width: 1200px;
 }
 
 .popup {
