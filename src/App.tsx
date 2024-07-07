@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ThemeProvider } from './hello/theme'
+import { ThemeProvider } from './theme/theme'
 import LandingPage from './landing/LandingPage'
 import SettlementCalculator from './settlement-calculator/SettlementCalculator'
 import { useAppSelector } from './hooks'
