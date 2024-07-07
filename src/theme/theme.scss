@@ -1,0 +1,8 @@
+@import 'src/colors.scss';
+
+.theme {
+  @include lightmode();
+  &.is_inverted {
+      @include darkmode();
+  }
+}
