@@ -25,73 +25,57 @@ export const useLoadWebsiteInfo = () => {
   const backendUri = process.env.REACT_APP_BACKEND_URI
   const s3Uri = process.env.REACT_APP_S3_URI
 
+  // Tries the live API first and falls back to the S3 backup when the API is
+  // unreachable or no backend is configured. The returned promise rejects when
+  // the live API could not be used so the API status stays accurate.
+  const requestWithBackup = (
+    endpoint: string,
+    backupFile: string,
+    onSuccess: (data: any) => void
+  ) => {
+    const loadBackup = () => {
+      console.warn(`Contacting S3 Backups for ${endpoint}`)
+      axios.get(`${s3Uri}/${backupFile}`).then((response) => {
+        onSuccess(response.data)
+      })
+    }
+
+    if (!backendUri) {
+      loadBackup()
+      return Promise.reject(`No backend configured for ${endpoint}`)
+    }
+
+    return axios
+      .get(`${backendUri}/${endpoint}`)
+      .then((response) => {
+        onSuccess(response.data)
+      })
+      .catch(() => {
+        loadBackup()
+        return Promise.reject(
+          `Failed to get to contact Live API for ${endpoint}`
+        )
+      })
+  }
+
   const loadWebsiteInfo = () => {
     Promise.allSettled([
-      axios
-        .get(`${backendUri}/Bio`)
-        .then((response) => {
-          const bioResponse = response.data[0] as IBio
-          dispatch(setBio(bioResponse))
-        })
-        .catch(() => {
-          console.warn('Contacting S3 Backups for Bio')
-          axios.get(`${s3Uri}/bio.json`).then((response) => {
-            const bioResponse = response.data as IBio
-            dispatch(setBio(bioResponse))
-          })
-          return Promise.reject('Failed to get to contact Live API for Bio')
-        }),
+      requestWithBackup('Bio', 'bio.json', (data) => {
+        const bioResponse = (Array.isArray(data) ? data[0] : data) as IBio
+        dispatch(setBio(bioResponse))
+      }),
 
-      axios
-        .get(`${backendUri}/Education`)
-        .then((response) => {
-          const educationResponse = response.data as IEducation[]
-          dispatch(setEducations(educationResponse))
-        })
-        .catch(() => {
-          console.warn('Contacting S3 Backups for Education')
-          axios.get(`${s3Uri}/education.json`).then((response) => {
-            const educationResponse = response.data as IEducation[]
-            dispatch(setEducations(educationResponse))
-          })
-          return Promise.reject(
-            'Failed to get to contact Live API for Education'
-          )
-        }),
+      requestWithBackup('Education', 'education.json', (data) => {
+        dispatch(setEducations(data as IEducation[]))
+      }),
 
-      axios
-        .get(`${backendUri}/Employment`)
-        .then((response) => {
-          const employmentResponse = response.data as IEmployment[]
-          dispatch(setEmployments(employmentResponse))
-        })
-        .catch(() => {
-          console.warn('Contacting S3 Backups for Employment')
-          axios.get(`${s3Uri}/employment.json`).then((response) => {
-            const employmentResponse = response.data as IEmployment[]
-            dispatch(setEmployments(employmentResponse))
-          })
-          return Promise.reject(
-            'Failed to get to contact Live API for Employment'
-          )
-        }),
+      requestWithBackup('Employment', 'employment.json', (data) => {
+        dispatch(setEmployments(data as IEmployment[]))
+      }),
 
-      axios
-        .get(`${backendUri}/Project`)
-        .then((response) => {
-          const projectResponse = response.data as IProject[]
-          dispatch(setProjects(projectResponse))
-        })
-        .catch((onReject) => {
-          console.warn('Contacting S3 Backups for Projects')
-          axios.get(`${s3Uri}/project.json`).then((response) => {
-            const projectResponse = response.data as IProject[]
-            dispatch(setProjects(projectResponse))
-          })
-          return Promise.reject(
-            'Failed to get to contact Live API for Projects'
-          )
-        }),
+      requestWithBackup('Project', 'project.json', (data) => {
+        dispatch(setProjects(data as IProject[]))
+      }),
     ])
       .then((results) => {
         dispatch(setWebsiteInfoLoaded(true))

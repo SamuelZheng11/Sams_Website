@@ -44,7 +44,7 @@ function LandingPage() {
 
   useEffect(() => {
     loadWebsiteInfo()
-  })
+  }, [loadWebsiteInfo])
 
   useEffect(
     () => () =>
