@@ -42,10 +42,15 @@ function EmploymentComponent() {
                       {employment.employer}
                     </Typography>
                     <Typography variant="subtitle1" component="p">
-                      {getYearRangeBetween(
-                        employment.startDate,
-                        employment.endDate
-                      )}
+                      {employment.title
+                        ? `${employment.title} · ${getYearRangeBetween(
+                            employment.startDate,
+                            employment.endDate
+                          )}`
+                        : getYearRangeBetween(
+                            employment.startDate,
+                            employment.endDate
+                          )}
                     </Typography>
                     <LaunchIcon aria-hidden="true" />
                   </Layout>

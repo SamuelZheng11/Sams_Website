@@ -18,11 +18,17 @@
 
     &-title-container {
       align-items: baseline;
+      text-align: left;
       padding-bottom: $spacing-x-small;
       flex-wrap: wrap;
 
       > * {
         padding-right: $spacing-xx-small;
+      }
+
+      > :first-child {
+        flex-basis: 100%;
+        padding-right: 0;
       }
 
       :last-child {

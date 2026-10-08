@@ -1,7 +1,8 @@
 export interface IEmployment {
-    startDate: Date,
-    endDate: Date,
-    employer: string,
-    employerWebsite: string,
-    summaries: string[]
+  startDate: Date
+  endDate: Date
+  employer: string
+  title: string
+  employerWebsite: string
+  summaries: string[]
 }
