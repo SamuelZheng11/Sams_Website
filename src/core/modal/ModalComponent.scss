@@ -1,23 +1,29 @@
 @import 'src/variables.scss';
+@import 'src/colors.scss';
 
 .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400;
-    background-color: white;
-    border: 2px solid #000;
-    box-shadow: 24;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-width: calc(100vw - $spacing-medium);
+  background-color: $background-color-base-1;
+  border: 2px solid $text-color;
+  padding: $spacing-large;
+  display: flex;
+  flex-direction: column;
+  color: $text-color;
 
-    &-buttons-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        gap: $spacing-small;
-        padding-top: $spacing-medium;
-    }
+  &-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: $spacing-small;
+    padding-top: $spacing-medium;
   }
+
+  @media (max-width: 600px) {
+    padding: $spacing-medium;
+  }
+}

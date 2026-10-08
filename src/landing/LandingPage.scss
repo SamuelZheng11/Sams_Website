@@ -20,7 +20,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$background-color-base-1", endColorstr="$background-color-accent", GradientType=1 );
 
   color: $text-color;
-  
+
   a:link {
     color: $link-color;
   }
@@ -34,6 +34,47 @@
       padding: $spacing-xxx-large 0 $spacing-xxx-large 0;
       justify-content: center;
       display: flex;
+      // Offset anchored sections that land underneath the fixed header
+      scroll-margin-top: $size-xxx-large;
+    }
+  }
+
+  // A visually hidden skip link that becomes visible when focused
+  .skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+    z-index: 1200;
+
+    &:focus {
+      position: fixed;
+      top: $spacing-small;
+      left: $spacing-small;
+      width: auto;
+      height: auto;
+      padding: $spacing-xx-small $spacing-small;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+      background-color: $background-color-base-2;
+      color: $text-color;
+      border-radius: $size-xxx-small;
+      border: 2px solid $text-color;
+    }
+  }
+
+  @media (max-width: 600px) {
+    &-body {
+      > * {
+        padding: $spacing-large 0;
+      }
     }
   }
 }

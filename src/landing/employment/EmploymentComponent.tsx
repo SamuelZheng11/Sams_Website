@@ -17,9 +17,15 @@ function EmploymentComponent() {
   const employments = useAppSelector((state) => state.information.employments)
 
   return (
-    <Layout className="employment">
+    <Layout
+      className="employment"
+      component="section"
+      aria-labelledby="employment-title"
+    >
       <div className="employment-title-container">
-        <Typography variant="h3">{EMPLOYMENT_TITLE}</Typography>
+        <Typography variant="h3" component="h2" id="employment-title">
+          {EMPLOYMENT_TITLE}
+        </Typography>
       </div>
 
       <LoadingSpinnerComponent loaded={contentLoaded}>
@@ -32,14 +38,16 @@ function EmploymentComponent() {
                     className="employment-card-title-container"
                     orientation="horizontal"
                   >
-                    <Typography variant="h4">{employment.employer}</Typography>
-                    <Typography variant="subtitle1">
+                    <Typography variant="h4" component="h3">
+                      {employment.employer}
+                    </Typography>
+                    <Typography variant="subtitle1" component="p">
                       {getYearRangeBetween(
                         employment.startDate,
                         employment.endDate
                       )}
                     </Typography>
-                    <LaunchIcon></LaunchIcon>
+                    <LaunchIcon aria-hidden="true" />
                   </Layout>
                 </a>
               </Layout>

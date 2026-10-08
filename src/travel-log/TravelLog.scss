@@ -1,28 +1,47 @@
 @import 'src/variables.scss';
 
 .travel-log {
-    height: 75vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $spacing-large;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-large;
+  padding: $spacing-medium $spacing-small $spacing-large;
 }
 
 .travel-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1000px;
-    padding-top: $spacing-medium;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  padding-top: $spacing-medium;
+  text-align: center;
+
+  h1 {
+    font-size: $size-medium;
+    margin: 0;
+  }
+
+  p {
+    margin: $spacing-xx-small 0 0 0;
+    font-size: 0.875rem;
+  }
+}
+
+.travel-map-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 75vh;
+  min-height: 400px;
 }
 
 .travel-map {
-    height: 1080px;
-    width: 1200px;
+  width: 100%;
+  height: 100%;
 }
 
 .popup {
-    margin-bottom: 55px;
-    margin-left: 1px;
+  margin-bottom: 55px;
+  margin-left: 1px;
 }

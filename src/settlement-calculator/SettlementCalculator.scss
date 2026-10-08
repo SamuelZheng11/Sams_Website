@@ -2,12 +2,13 @@
 @import 'src/colors.scss';
 
 .settlement-calculator {
-  min-width: 600px;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: $size-small;
   color: $text-color;
+  padding: 0 $spacing-small;
 
   background: $background-color-base-1;
   background: linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
@@ -21,14 +22,32 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+
+    h1 {
+      font-size: $size-medium;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
   }
-  
+
+  &-error {
+    color: $api-online-status-color;
+    text-align: center;
+    font-weight: 500;
+  }
+
   &-buttons-container {
     margin-top: $spacing-medium;
     margin-bottom: $spacing-medium;
     gap: $spacing-medium;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
@@ -38,7 +57,9 @@
     justify-content: center;
     gap: $size-small;
     align-items: center;
+    flex-wrap: wrap;
     border: 1px lightgray;
+    padding: $spacing-xx-small 0;
 
     &-button-container {
       display: flex;

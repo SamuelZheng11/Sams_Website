@@ -29,9 +29,15 @@ function ProjectComponent() {
   }
 
   return (
-    <Layout className="project">
+    <Layout
+      className="project"
+      component="section"
+      aria-labelledby="project-title"
+    >
       <div className="project-title-container">
-        <Typography variant="h3">{PROJECT_TITLE}</Typography>
+        <Typography variant="h3" component="h2" id="project-title">
+          {PROJECT_TITLE}
+        </Typography>
       </div>
 
       <LoadingSpinnerComponent loaded={contentLoaded}>
@@ -42,8 +48,10 @@ function ProjectComponent() {
                 className="project-card-title-container"
                 orientation="horizontal"
               >
-                <Typography variant="h4">{project.projectName}</Typography>
-                <Typography variant="subtitle1">
+                <Typography variant="h4" component="h3">
+                  {project.projectName}
+                </Typography>
+                <Typography variant="subtitle1" component="p">
                   {getYearRangeBetween(project.startDate, project.endDate)}
                 </Typography>
               </Layout>

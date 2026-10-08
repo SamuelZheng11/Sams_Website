@@ -19,14 +19,22 @@ function FooterComponent() {
   }
 
   return (
-    <Layout orientation="vertical" className="footer">
+    <Layout orientation="vertical" className="footer" component="footer">
       <LoadingSpinnerComponent loaded={contentLoaded}>
         <div>
-          <Typography variant="subtitle2" className="footer-text">
+          <Typography
+            variant="subtitle2"
+            component="p"
+            className="footer-text"
+          >
             {maintenanceNote?.credits}
           </Typography>
           <Layout orientation="horizontal">
-            <Typography variant="subtitle2" className="footer-text">
+            <Typography
+              variant="subtitle2"
+              component="p"
+              className="footer-text"
+            >
               {getMaintenanceNotesAcknowledgments()}
             </Typography>
           </Layout>

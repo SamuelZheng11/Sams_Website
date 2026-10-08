@@ -13,9 +13,11 @@ function AboutComponent() {
   const aboutMe = useAppSelector((state) => state.information.bio?.aboutMe)
 
   return (
-    <div className="about">
+    <section className="about" aria-labelledby="about-title">
       <div className="about-title-container">
-        <Typography variant="h3">{ABOUT_TITLE}</Typography>
+        <Typography variant="h3" component="h2" id="about-title">
+          {ABOUT_TITLE}
+        </Typography>
       </div>
 
       <div className="about-body-container">
@@ -25,7 +27,7 @@ function AboutComponent() {
           </Typography>
         </LoadingSpinnerComponent>
       </div>
-    </div>
+    </section>
   )
 }
 

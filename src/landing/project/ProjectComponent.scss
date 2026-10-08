@@ -19,6 +19,7 @@
         &-title-container {            
             align-items: baseline;
             padding-bottom: $spacing-x-small;
+            flex-wrap: wrap;
 
 
             > * { 
@@ -42,6 +43,12 @@
             :last-child {
                 padding-bottom: 0;
             }
+        }
+    }
+
+    @media (max-width: 600px) {
+        &-card {
+            padding: $spacing-medium;
         }
     }
 }

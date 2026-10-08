@@ -1,37 +1,43 @@
 @import 'src/variables.scss';
 
-.employment{
-    > div > * {
-        margin-bottom: $spacing-large;
-    }
+.employment {
+  > div > * {
+    margin-bottom: $spacing-large;
+  }
+
+  &-title-container {
+    margin-bottom: $spacing-xx-large;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  &-card {
+    padding: $spacing-x-large;
 
     &-title-container {
-        margin-bottom: $spacing-xx-large;
+      align-items: baseline;
+      padding-bottom: $spacing-x-small;
+      flex-wrap: wrap;
+
+      > * {
+        padding-right: $spacing-xx-small;
+      }
+
+      :last-child {
+        padding-right: 0;
+      }
     }
 
-    :last-child {
-        margin-bottom: 0;
+    &-body-text {
+      text-align: left;
     }
+  }
 
-    &-card{
-        padding: $spacing-x-large;        
-
-        &-title-container {            
-            align-items: baseline;
-            padding-bottom: $spacing-x-small;
-
-
-            > * { 
-                padding-right: $spacing-xx-small;
-            }
-    
-            :last-child {
-                padding-right: 0;
-            }
-        }
-
-        &-body-text {
-            text-align: left;
-        }
+  @media (max-width: 600px) {
+    &-card {
+      padding: $spacing-medium;
     }
+  }
 }

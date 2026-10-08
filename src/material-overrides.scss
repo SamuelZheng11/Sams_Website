@@ -1,17 +1,58 @@
 @import './variables.scss';
 @import './colors.scss';
 
+// Global MUI text resets
 .MuiTypography-root {
     font-family: inherit !important;
 }
 
+// The site header renders its own colouring through CSS custom properties
 .MuiAppBar-root {
     color: inherit !important;
-    // Need to fix this later
     background-color: $background-color-base-1 !important;
     box-shadow: inherit !important;
 }
 
-.MuiPaper-root {
+// Pin the fixed app bar to the left edge (MUI defaults to right: 0)
+.MuiAppBar-positionFixed {
     left: 0 !important;
+}
+
+// Responsive heading sizes for small screens.
+// Specificity is raised (.MuiTypography-root + variant) so these win over the
+// MUI theme regardless of style injection order.
+@media (max-width: 900px) {
+    .MuiTypography-root.MuiTypography-h2 {
+        font-size: 2.5rem;
+    }
+
+    .MuiTypography-root.MuiTypography-h3 {
+        font-size: 2rem;
+    }
+
+    .MuiTypography-root.MuiTypography-h4 {
+        font-size: 1.5rem;
+    }
+
+    .MuiTypography-root.MuiTypography-h5 {
+        font-size: 1.25rem;
+    }
+
+    .MuiTypography-root.MuiTypography-h6 {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .MuiTypography-root.MuiTypography-h2 {
+        font-size: 2.125rem;
+    }
+
+    .MuiTypography-root.MuiTypography-h3 {
+        font-size: 1.75rem;
+    }
+
+    .MuiTypography-root.MuiTypography-h4 {
+        font-size: 1.35rem;
+    }
 }

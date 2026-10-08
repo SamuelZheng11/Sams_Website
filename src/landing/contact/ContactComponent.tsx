@@ -25,46 +25,53 @@ function ContactComponent() {
   }
 
   return (
-    <div className="contact">
+    <section className="contact" aria-labelledby="contact-title">
       <div className="contact-title-container">
-        <Typography variant="h4">{CONTACT_TITLE}</Typography>
+        <Typography variant="h4" component="h2" id="contact-title">
+          {CONTACT_TITLE}
+        </Typography>
       </div>
 
       <LoadingSpinnerComponent loaded={contentLoaded}>
         <div>
           <Layout orientation="horizontal">
-            <PersonIcon></PersonIcon>
+            <PersonIcon aria-hidden="true" />
             <Typography className="contact-detail-text">
+              <span className="visually-hidden">Name: </span>
               {getFullnameFromContact()}
             </Typography>
           </Layout>
           <Layout orientation="horizontal">
-            <MailOutlineIcon></MailOutlineIcon>
+            <MailOutlineIcon aria-hidden="true" />
             <Typography className="contact-detail-text">
+              <span className="visually-hidden">Email: </span>
               {contact?.email}
             </Typography>
           </Layout>
           <Layout orientation="horizontal">
-            <LocationOnIcon></LocationOnIcon>
+            <LocationOnIcon aria-hidden="true" />
             <Typography className="contact-detail-text">
+              <span className="visually-hidden">Location: </span>
               {contact?.location}
             </Typography>
           </Layout>
           <Layout orientation="horizontal">
-            <GitHubIcon></GitHubIcon>
+            <GitHubIcon aria-hidden="true" />
             <Typography className="contact-detail-text">
+              <span className="visually-hidden">GitHub: </span>
               {contact?.gitHub}
             </Typography>
           </Layout>
           <Layout orientation="horizontal">
-            <LinkedInIcon></LinkedInIcon>
+            <LinkedInIcon aria-hidden="true" />
             <Typography className="contact-detail-text">
+              <span className="visually-hidden">LinkedIn: </span>
               {contact?.linkedIn}
             </Typography>
           </Layout>
         </div>
       </LoadingSpinnerComponent>
-    </div>
+    </section>
   )
 }
 
