@@ -1,4 +1,4 @@
-import { createRef, useEffect } from 'react'
+import { createRef, RefObject, useEffect } from 'react'
 import { Subscription } from 'rxjs'
 
 import { useAppSelector } from '../hooks'
@@ -52,30 +52,38 @@ function LandingPage() {
     []
   )
 
+  const getScrollBehavior = (): ScrollBehavior =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto'
+      : 'smooth'
+
+  const scrollRefIntoView = (ref: RefObject<HTMLDivElement>) =>
+    ref.current?.scrollIntoView({ behavior: getScrollBehavior() })
+
   const checkViewToScrollTo = (view: LandingPages) => {
     switch (view) {
       case LandingPages.home:
-        homeRef.current?.scrollIntoView({ behavior: 'smooth' })
+        scrollRefIntoView(homeRef)
         break
 
       case LandingPages.about:
-        aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
+        scrollRefIntoView(aboutRef)
         break
 
       case LandingPages.employment:
-        employmentRef.current?.scrollIntoView({ behavior: 'smooth' })
+        scrollRefIntoView(employmentRef)
         break
 
       case LandingPages.education:
-        educationRef.current?.scrollIntoView({ behavior: 'smooth' })
+        scrollRefIntoView(educationRef)
         break
 
       case LandingPages.project:
-        projectRef.current?.scrollIntoView({ behavior: 'smooth' })
+        scrollRefIntoView(projectRef)
         break
 
       case LandingPages.contact:
-        contactRef.current?.scrollIntoView({ behavior: 'smooth' })
+        scrollRefIntoView(contactRef)
         break
 
       default:
@@ -85,8 +93,11 @@ function LandingPage() {
 
   return (
     <div className="landing-page" ref={websiteRef}>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <HeaderComponent></HeaderComponent>
-      <div className="landing-page-body">
+      <main id="main-content" tabIndex={-1} className="landing-page-body">
         <div ref={homeRef}>
           <HomePageComponent></HomePageComponent>
         </div>
@@ -105,7 +116,7 @@ function LandingPage() {
         <div ref={contactRef}>
           <ContactComponent></ContactComponent>
         </div>
-      </div>
+      </main>
       <FooterComponent></FooterComponent>
     </div>
   )

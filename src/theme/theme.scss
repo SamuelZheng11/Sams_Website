@@ -1,8 +1,9 @@
 @import 'src/colors.scss';
 
-.theme {
+:root {
   @include lightmode();
-  &.is_inverted {
-      @include darkmode();
-  }
+}
+
+:root[data-theme='dark'] {
+  @include darkmode();
 }

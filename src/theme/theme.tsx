@@ -1,4 +1,4 @@
-import { createRef, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import './theme.scss'
 
@@ -10,17 +10,9 @@ type Props = {
 export type Theme = 'light' | 'dark'
 
 export function ThemeProvider({ children, theme }: Props) {
-  const [themeRef] = [createRef<HTMLDivElement>()]
-
   useEffect(() => {
-    theme === 'light'
-      ? themeRef.current?.classList.remove('is_inverted')
-      : themeRef.current?.classList.add('is_inverted')
+    document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
-  return (
-    <div className="theme" ref={themeRef}>
-      {children}
-    </div>
-  )
+  return <>{children}</>
 }

@@ -27,15 +27,18 @@ export default function SettlementCalculator() {
   const [modalPersonName, setModalPersonName] = useState('')
   const [modalPersonAmount, setModalPersonAmount] = useState('')
   const [modalPersonId, setModalPersonId] = useState<number | undefined>()
+  const [error, setError] = useState('')
 
   const onSubmit = (fullName: string, amount: string, id?: number) => {
     if (
       isNaN(parseInt(amount)) ||
       parseInt(amount).toString().length !== amount.length
     ) {
-      alert('Amount paid must be a number')
+      setError('Amount paid must be a number')
       return
     }
+
+    setError('')
 
     if (isEditing && id) return updatePerson(id, fullName, parseInt(amount))
 
@@ -97,9 +100,10 @@ export default function SettlementCalculator() {
           <span>{person.amount}</span>
         </div>
         |
-        <div className="settlement-calculator-person-button-contanier">
+        <div className="settlement-calculator-person-button-container">
           <IconButton
             className="settlement-calculator-person-edit-button"
+            aria-label={`Edit ${person.fullName}`}
             onClick={() => {
               editPerson(person.id, person.fullName, person.amount)
             }}
@@ -108,6 +112,7 @@ export default function SettlementCalculator() {
           </IconButton>
           <IconButton
             className="settlement-calculator-person-delete-button"
+            aria-label={`Delete ${person.fullName}`}
             onClick={() => removePerson(person.id)}
           >
             <DeleteIcon />
@@ -120,9 +125,15 @@ export default function SettlementCalculator() {
   return (
     <div className="settlement-calculator">
       <div className="settlement-calculator-header">
-        <h2>Calculator for settling debts</h2>
-        <h5>This tool will calculate who pays how much to who</h5>
+        <h1>Calculator for settling debts</h1>
+        <p>This tool will calculate who pays how much to who</p>
       </div>
+
+      {error && (
+        <div className="settlement-calculator-error" role="alert">
+          {error}
+        </div>
+      )}
 
       {people?.length ? (
         <div>{people.map((person: Person) => PersonList(person))}</div>
@@ -139,6 +150,7 @@ export default function SettlementCalculator() {
           submit
           cancel
           submitText={isEditing ? 'Save' : 'Add'}
+          aria-label={isEditing ? 'Edit person' : 'Add person'}
           onSubmit={() =>
             onSubmit(modalPersonName, modalPersonAmount, modalPersonId)
           }
@@ -147,16 +159,18 @@ export default function SettlementCalculator() {
         >
           <div className="modal-person-input">
             <div className="modal-person-input-field">
-              <span>Name: </span>
+              <label htmlFor="settlement-person-name">Name: </label>
               <input
+                id="settlement-person-name"
                 value={modalPersonName}
                 placeholder="Enter a name"
                 onChange={(next) => setModalPersonName(next.target.value)}
               ></input>
             </div>
             <div className="modal-person-input-field">
-              <span>Amount paid: </span>
+              <label htmlFor="settlement-person-amount">Amount paid: </label>
               <input
+                id="settlement-person-amount"
                 placeholder="Enter an amount"
                 value={modalPersonAmount}
                 onChange={(next) => setModalPersonAmount(next.target.value)}
@@ -171,7 +185,10 @@ export default function SettlementCalculator() {
           Calculate
         </Button>
       </div>
-      <div className="settlement-calculator-debt-container">
+      <div
+        className="settlement-calculator-debt-container"
+        aria-live="polite"
+      >
         {people?.length
           ? debts !== undefined &&
             (debts.length !== 0 ? (

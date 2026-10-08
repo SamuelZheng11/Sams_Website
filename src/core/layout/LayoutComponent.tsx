@@ -1,20 +1,45 @@
-import { ReactElement } from "react";
-import { TLayoutOrientation, TLayoutSpacing } from "./LayoutTypes";
-import './LayoutComponent.scss';
+import { ElementType, ReactNode } from 'react'
+import { TLayoutElement, TLayoutOrientation, TLayoutSpacing } from './LayoutTypes'
+import './LayoutComponent.scss'
 
 export interface LayoutProps {
-    children?: ReactElement | ReactElement[];
-    orientation?: TLayoutOrientation;
-    spacing?: TLayoutSpacing;
-    className?: string | string[];
+  children?: ReactNode
+  orientation?: TLayoutOrientation
+  spacing?: TLayoutSpacing
+  className?: string | string[]
+  component?: TLayoutElement
+  id?: string
+  'aria-label'?: string
+  'aria-labelledby'?: string
 }
 
 function Layout(props: LayoutProps) {
-    return(
-        <div className={`${props.className} layout ${props.orientation === 'horizontal' ? 'layout-horizontal-container' : 'layout-vertical-container'} layout-spacing-${props.spacing}`}>
-            {props.children}
-        </div>
-    )
+  const Component: ElementType = props.component ?? 'div'
+  const className = Array.isArray(props.className)
+    ? props.className.join(' ')
+    : props.className
+
+  const classNames = [
+    className,
+    'layout',
+    props.orientation === 'horizontal'
+      ? 'layout-horizontal-container'
+      : 'layout-vertical-container',
+    props.spacing ? `layout-spacing-${props.spacing}` : undefined,
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  return (
+    <Component
+      className={classNames}
+      id={props.id}
+      aria-label={props['aria-label']}
+      aria-labelledby={props['aria-labelledby']}
+    >
+      {props.children}
+    </Component>
+  )
 }
 
-export default Layout;
+export default Layout

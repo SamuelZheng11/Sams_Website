@@ -1,18 +1,22 @@
 @import 'src/variables.scss';
 
 .about {
-    &-title-container {
-        margin-bottom: $spacing-x-small;
+  &-title-container {
+    margin-bottom: $spacing-x-small;
+  }
+
+  &-body {
+    &-text {
+      text-align: left;
+      padding-bottom: $spacing-xx-small;
     }
 
-    &-body {
-        &-text {
-            text-align: left;
-            padding-bottom: $spacing-xx-small;
-        }
-    
-        &-container {
-            padding: $spacing-x-large;
-        }
+    &-container {
+      padding: $spacing-x-large;
+
+      @media (max-width: 600px) {
+        padding: $spacing-medium;
+      }
     }
+  }
 }

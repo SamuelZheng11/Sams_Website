@@ -5,26 +5,116 @@
  * App header background color is being overriden in the material overrides master file
  */
 
-.header{
-    padding: 0 $size-large 0 $size-large;
-    height: $size-xxx-large;
-    overflow-x: overlay;
+.header {
+  padding: 0 $size-large 0 $size-large;
+  height: $size-xxx-large;
 
-    color: $text-color;
-    a { color: var(--link-color); }
+  color: $text-color;
+  a {
+    color: var(--link-color);
+  }
 
-    box-shadow: none;
+  box-shadow: none;
 
-    &-nav-container{
-        padding-left: $spacing-x-small;
+  &-website-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-        .header-nav-option {
-            margin: 0 $size-x-small 0 $size-x-small;
-            cursor: pointer;
-        }
+  &-nav-container {
+    padding-left: $spacing-x-small;
 
-        :last-child {
-            margin-right: 0;
-        }
+    .header-nav-option {
+      margin: 0 $size-x-small 0 $size-x-small;
+      cursor: pointer;
+
+      padding: 0;
+      background: none;
+      border: none;
+      color: inherit;
+      text-align: inherit;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.0075em;
+      line-height: 1.6;
+
+      &:hover,
+      &:focus-visible {
+        opacity: 0.75;
+      }
     }
+
+    .MuiSwitch-root {
+      margin: $size-xx-small;
+    }
+
+    :last-child {
+      margin-right: 0;
+    }
+  }
+
+  &-menu-button {
+    color: inherit;
+  }
+
+  &-menu-paper {
+    width: min(280px, 85vw);
+    background-color: $background-color-base-1 !important;
+    color: $text-color !important;
+
+    .MuiDivider-root {
+      border-color: $divider-color;
+    }
+  }
+
+  &-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-small;
+    padding: $spacing-x-small $spacing-small $spacing-x-small $spacing-medium;
+    min-height: $size-xxx-large;
+  }
+
+  &-menu-nav {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-xx-small 0;
+
+    &-option {
+      display: block;
+      width: 100%;
+      padding: $spacing-small $spacing-medium;
+      text-align: left;
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        background-color: rgba(128, 128, 128, 0.2);
+      }
+    }
+  }
+
+  &-menu-preferences {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-small;
+    padding: $spacing-small $spacing-medium;
+  }
+
+  @media (max-width: 900px) {
+    padding: 0 $spacing-small;
+
+    &-website-name {
+      font-size: 1.1rem;
+    }
+  }
 }

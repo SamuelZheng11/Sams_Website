@@ -21,9 +21,15 @@ function EducationComponent() {
   }
 
   return (
-    <div className="education">
+    <Layout
+      className="education"
+      component="section"
+      aria-labelledby="education-title"
+    >
       <div className="education-title-container">
-        <Typography variant="h3">{EDUCATION_TITLE}</Typography>
+        <Typography variant="h3" component="h2" id="education-title">
+          {EDUCATION_TITLE}
+        </Typography>
       </div>
 
       <LoadingSpinnerComponent loaded={contentLoaded}>
@@ -39,16 +45,16 @@ function EducationComponent() {
                     className="education-card-title-container"
                     orientation="horizontal"
                   >
-                    <Typography variant="h4">
+                    <Typography variant="h4" component="h3">
                       {education.institutionName}
                     </Typography>
-                    <Typography variant="subtitle1">
+                    <Typography variant="subtitle1" component="p">
                       {getYearRangeBetween(
                         education.startDate,
                         education.endDate
                       )}
                     </Typography>
-                    <LaunchIcon></LaunchIcon>
+                    <LaunchIcon aria-hidden="true" />
                   </Layout>
                 </a>
               </Layout>
@@ -63,7 +69,7 @@ function EducationComponent() {
                 </Typography>
               ))}
 
-              {/* using "component={'span'}" to suppress error "<ul> cannot appear as a child of <p>" 
+              {/* using "component={'span'}" to suppress error "<ul> cannot appear as a child of <p>"
                                 as material Typography by default wraps everything in using <p>*/}
               <Typography
                 component={'span'}
@@ -81,7 +87,7 @@ function EducationComponent() {
           ))}
         </div>
       </LoadingSpinnerComponent>
-    </div>
+    </Layout>
   )
 }
 

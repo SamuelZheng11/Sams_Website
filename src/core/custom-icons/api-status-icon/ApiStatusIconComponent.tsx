@@ -16,8 +16,8 @@ function ApiStatusIcon(props: ApiStatusProps) {
     return (
         <React.Fragment>
             <Layout className="api-status-icon" orientation="horizontal">
-                <Circle className={`${props.online ? 'online' : 'offline'}`}></Circle>
-                <Typography className="api-status-icon-text" variant="body2" >API - {props.online ? ONLINE_TEXT : OFFLINE_TEXT}</Typography>
+                <Circle className={`${props.online ? 'online' : 'offline'}`} aria-hidden="true"></Circle>
+                <Typography className="api-status-icon-text" variant="body2" component="span" >API - {props.online ? ONLINE_TEXT : OFFLINE_TEXT}</Typography>
             </Layout>
         </React.Fragment>
     )
