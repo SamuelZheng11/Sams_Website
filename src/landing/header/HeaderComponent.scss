@@ -55,6 +55,28 @@
     }
   }
 
+  &-travels-option {
+    display: inline-flex;
+    align-items: center;
+    gap: $size-xx-small;
+    margin: 0 $size-x-small 0 $size-x-small;
+    padding: $spacing-xxx-small $spacing-small;
+    cursor: pointer;
+
+    background: none;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    color: inherit;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.6;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.75;
+    }
+  }
+
   &-menu-button {
     color: inherit;
   }
@@ -85,6 +107,26 @@
 
     &-option {
       display: block;
+      width: 100%;
+      padding: $spacing-small $spacing-medium;
+      text-align: left;
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        background-color: rgba(128, 128, 128, 0.2);
+      }
+    }
+
+    &-travels-option {
+      display: flex;
+      align-items: center;
+      gap: $size-x-small;
       width: 100%;
       padding: $spacing-small $spacing-medium;
       text-align: left;
