@@ -1,4 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { MapOutlined } from '@mui/icons-material'
 import {
   Divider,
   Drawer,
@@ -22,6 +24,8 @@ import {
   HEADER_WEBSITE_NAME,
   HOME_HEADER_TITLE,
   PROJECT_HEADER_TITLE,
+  TRAVELS_TITLE,
+  TRAVELS_ROUTE,
 } from './HeaderConstants'
 import { toggleTheme } from '../../theme/slice/ThemeSlice'
 
@@ -50,6 +54,7 @@ function HeaderComponent(props: IHeaderProps) {
     useAppSelector((state) => state.theme.theme) === 'dark'
   const apiOnline = useAppSelector((state) => state.information.apiOnline)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const isMobile = useMediaQuery('(max-width: 900px)')
   const [menuAnchorElement, setMenuAnchorElement] = useState<HTMLElement | null>(
     null
@@ -64,6 +69,11 @@ function HeaderComponent(props: IHeaderProps) {
   const navigateTo = (page: LandingPages) => {
     dispatch(scrollTo(page))
     setMenuAnchorElement(null)
+  }
+
+  const navigateToTravels = () => {
+    setMenuAnchorElement(null)
+    navigate(TRAVELS_ROUTE)
   }
 
   const themeSwitch = (labelledById?: string) => (
@@ -148,6 +158,15 @@ function HeaderComponent(props: IHeaderProps) {
                       {title}
                     </button>
                   ))}
+
+                  <button
+                    type="button"
+                    className="header-menu-nav-travels-option"
+                    onClick={navigateToTravels}
+                  >
+                    <MapOutlined aria-hidden="true" />
+                    <span>{TRAVELS_TITLE}</span>
+                  </button>
                 </nav>
 
                 <Divider />
@@ -180,6 +199,15 @@ function HeaderComponent(props: IHeaderProps) {
                   {title}
                 </button>
               ))}
+
+              <button
+                type="button"
+                className="header-travels-option"
+                onClick={navigateToTravels}
+              >
+                <MapOutlined aria-hidden="true" />
+                <span>{TRAVELS_TITLE}</span>
+              </button>
 
               {themeSwitch()}
               <CustomIcon type="api-status" active={apiOnline} />
