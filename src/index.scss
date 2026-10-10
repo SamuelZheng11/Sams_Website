@@ -7,20 +7,68 @@
   box-sizing: border-box;
 }
 
+// Display face: variable Montserrat. Retained as a fallback while the site
+// primarily uses Familjen Grotesk (loaded from Google Fonts in index.html).
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/monserrat/Montserrat-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
-  background-color: $background-color-base-1;
-  color: $text-color;
-  font-family: 'MontserratLight', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+// The serif italic accent: any <em> inside a heading renders in Instrument
+// Serif, giving headlines their editorial contrast.
+h1 em,
+h2 em,
+h3 em {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+// Headings may contain long single words (e.g. "Employment"); allow them to
+// break within the word instead of pushing the layout past the viewport.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: anywhere;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 150ms ease;
+  overflow-wrap: anywhere;
+}
+
+a:hover,
+a:focus-visible {
+  color: $color-accent;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 // A clear, keyboard-only focus indicator for every interactive element
 :focus-visible {
-  outline: 3px solid $link-color;
+  outline: 3px solid $color-accent;
   outline-offset: 2px;
 }
 
@@ -53,15 +101,10 @@ main:focus {
   }
 }
 
-@font-face {
-  font-family: "MontserratLight";
-  src: local("MontserratLight"),
-   url("./fonts/monserrat/static/Montserrat-Medium.ttf") format("truetype");
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+code,
+pre {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Courier New', monospace;
 }
 
 html::-webkit-scrollbar {
@@ -89,3 +132,7 @@ html::-webkit-scrollbar-thumb:active {
   background: $scroll-bar-thumb-active-color;
   border-radius: $size-xx-small;
 }
+
+// The ID-Badge design system: tokens, sections, motion and breakpoints. Kept
+// after the legacy resets/tokens so its rules win on specificity ties.
+@import 'src/id-badge.scss';

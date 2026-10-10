@@ -1,10 +1,11 @@
 import { Box, Button, Modal as MuiModal } from '@mui/material'
+import { ReactNode } from 'react'
 
 import './ModalComponent.scss'
 
-export interface PanelProps {
+export interface ModalProps {
   className?: string | string[]
-  children?: any
+  children?: ReactNode
   open: boolean
   buttonText: string
   submit?: boolean
@@ -18,7 +19,7 @@ export interface PanelProps {
   'aria-label'?: string
 }
 
-function Modal(props: PanelProps) {
+function Modal(props: ModalProps) {
   return (
     <>
       <Button

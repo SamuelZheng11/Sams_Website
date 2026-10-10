@@ -3,18 +3,10 @@
 
 .settlement-calculator {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: $size-small;
   color: $text-color;
-  padding: 0 $spacing-small;
-
-  background: $background-color-base-1;
-  background: linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
-  background: -moz-linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
-  background: -webkit-linear-gradient(90deg, $background-color-base-1 50%, $background-color-accent 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$background-color-base-1", endColorstr="$background-color-accent", GradientType=1 );
 
   &-header {
     margin-top: $spacing-medium;
@@ -26,12 +18,15 @@
     h1 {
       font-size: $size-medium;
       margin: 0;
+      font-family: $font-display;
+      color: var(--text);
     }
 
     p {
       margin: 0;
       font-size: 0.875rem;
       font-weight: 500;
+      color: var(--muted);
     }
   }
 
@@ -58,7 +53,7 @@
     gap: $size-small;
     align-items: center;
     flex-wrap: wrap;
-    border: 1px lightgray;
+    border: 1px solid $color-border;
     padding: $spacing-xx-small 0;
 
     &-button-container {
