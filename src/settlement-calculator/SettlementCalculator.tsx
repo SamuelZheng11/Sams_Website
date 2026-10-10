@@ -1,4 +1,4 @@
-import { Button, IconButton } from '@mui/material'
+import { Button } from '@mui/material'
 import {
   Person,
   setPeople,
@@ -7,13 +7,13 @@ import {
   setName,
   Debt,
 } from './slice/SettlementSlice'
-import DeleteIcon from '@mui/icons-material/Delete'
-import EditIcon from '@mui/icons-material/Edit'
 
 import './SettlementCalculator.scss'
 import { calculateDebts } from './Calculator/Calculator'
 import { useState } from 'react'
 import Modal from '../core/modal/ModalComponent'
+import SiteLayout from '../core/shell/SiteLayout'
+import { PersonRow } from './PersonRow'
 import { getRandomHexColor } from '../utils/color'
 import { useAppDispatch, useAppSelector } from '../hooks'
 
@@ -86,131 +86,106 @@ export default function SettlementCalculator() {
     dispatch(setPeople(newListOfPeopleWithIdsUpdated))
   }
 
-  const PersonList = (person: Person) => {
-    return (
-      <div key={person.id} className="settlement-calculator-person">
-        <span>{person.id}</span>|
-        <div>
-          <span>Name: </span>
-          <span style={{ color: person.color }}>{person.fullName}</span>
-        </div>
-        |
-        <div>
-          <span>Amount paid: </span>
-          <span>{person.amount}</span>
-        </div>
-        |
-        <div className="settlement-calculator-person-button-container">
-          <IconButton
-            className="settlement-calculator-person-edit-button"
-            aria-label={`Edit ${person.fullName}`}
-            onClick={() => {
-              editPerson(person.id, person.fullName, person.amount)
-            }}
-          >
-            <EditIcon />
-          </IconButton>
-          <IconButton
-            className="settlement-calculator-person-delete-button"
-            aria-label={`Delete ${person.fullName}`}
-            onClick={() => removePerson(person.id)}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="settlement-calculator">
-      <div className="settlement-calculator-header">
-        <h1>Calculator for settling debts</h1>
-        <p>This tool will calculate who pays how much to who</p>
-      </div>
-
-      {error && (
-        <div className="settlement-calculator-error" role="alert">
-          {error}
+    <SiteLayout subPage>
+      <div className="settlement-calculator">
+        <div className="settlement-calculator-header">
+          <h1>Calculator for settling debts</h1>
+          <p>This tool will calculate who pays how much to who</p>
         </div>
-      )}
 
-      {people?.length ? (
-        <div>{people.map((person: Person) => PersonList(person))}</div>
-      ) : (
-        <div className="settlement-calculator-person">
-          Add a person to begin
-        </div>
-      )}
-      <div className="settlement-calculator-buttons-container">
-        <Modal
-          open={modalOpen}
-          modalButtonVariant="outlined"
-          buttonText="Add person"
-          submit
-          cancel
-          submitText={isEditing ? 'Save' : 'Add'}
-          aria-label={isEditing ? 'Edit person' : 'Add person'}
-          onSubmit={() =>
-            onSubmit(modalPersonName, modalPersonAmount, modalPersonId)
-          }
-          onClose={() => setModalOpen(false)}
-          onOpen={() => setModalOpen(true)}
-        >
-          <div className="modal-person-input">
-            <div className="modal-person-input-field">
-              <label htmlFor="settlement-person-name">Name: </label>
-              <input
-                id="settlement-person-name"
-                value={modalPersonName}
-                placeholder="Enter a name"
-                onChange={(next) => setModalPersonName(next.target.value)}
-              ></input>
-            </div>
-            <div className="modal-person-input-field">
-              <label htmlFor="settlement-person-amount">Amount paid: </label>
-              <input
-                id="settlement-person-amount"
-                placeholder="Enter an amount"
-                value={modalPersonAmount}
-                onChange={(next) => setModalPersonAmount(next.target.value)}
-              ></input>
-            </div>
+        {error && (
+          <div className="settlement-calculator-error" role="alert">
+            {error}
           </div>
-        </Modal>
-        <Button
-          variant="contained"
-          onClick={() => dispatch(setDebts(calculateDebts(people)))}
+        )}
+
+        {people?.length ? (
+          <div>
+            {people.map((person: Person) => (
+              <PersonRow
+                key={person.id}
+                person={person}
+                onEdit={(p) => editPerson(p.id, p.fullName, p.amount)}
+                onDelete={removePerson}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="settlement-calculator-person">
+            Add a person to begin
+          </div>
+        )}
+        <div className="settlement-calculator-buttons-container">
+          <Modal
+            open={modalOpen}
+            modalButtonVariant="outlined"
+            buttonText="Add person"
+            submit
+            cancel
+            submitText={isEditing ? 'Save' : 'Add'}
+            aria-label={isEditing ? 'Edit person' : 'Add person'}
+            onSubmit={() =>
+              onSubmit(modalPersonName, modalPersonAmount, modalPersonId)
+            }
+            onClose={() => setModalOpen(false)}
+            onOpen={() => setModalOpen(true)}
+          >
+            <div className="modal-person-input">
+              <div className="modal-person-input-field">
+                <label htmlFor="settlement-person-name">Name: </label>
+                <input
+                  id="settlement-person-name"
+                  value={modalPersonName}
+                  placeholder="Enter a name"
+                  onChange={(next) => setModalPersonName(next.target.value)}
+                ></input>
+              </div>
+              <div className="modal-person-input-field">
+                <label htmlFor="settlement-person-amount">Amount paid: </label>
+                <input
+                  id="settlement-person-amount"
+                  placeholder="Enter an amount"
+                  value={modalPersonAmount}
+                  onChange={(next) => setModalPersonAmount(next.target.value)}
+                ></input>
+              </div>
+            </div>
+          </Modal>
+          <Button
+            variant="contained"
+            onClick={() => dispatch(setDebts(calculateDebts(people)))}
+          >
+            Calculate
+          </Button>
+        </div>
+        <div
+          className="settlement-calculator-debt-container"
+          aria-live="polite"
         >
-          Calculate
-        </Button>
-      </div>
-      <div
-        className="settlement-calculator-debt-container"
-        aria-live="polite"
-      >
-        {people?.length
-          ? debts !== undefined &&
-            (debts.length !== 0 ? (
-              debts.map((debt: Debt, i) => (
-                <div key={i} className="settlement-calculator-debt">
-                  <span style={{ color: debt.debitor.color }}>
-                    {debt.debitor.fullName}
-                  </span>{' '}
-                  (Id: {debt.debitor.id}) owes{' '}
-                  <span style={{ color: debt.creditor.color }}>
-                    {debt.creditor.fullName}
-                  </span>{' '}
-                  (Id: {debt.creditor.id}) ${debt.debtAmount}
+          {people?.length
+            ? debts !== undefined &&
+              (debts.length !== 0 ? (
+                debts.map((debt: Debt, i) => (
+                  <div key={i} className="settlement-calculator-debt">
+                    <span style={{ color: debt.debitor.color }}>
+                      {debt.debitor.fullName}
+                    </span>{' '}
+                    (Id: {debt.debitor.id}) owes{' '}
+                    <span style={{ color: debt.creditor.color }}>
+                      {debt.creditor.fullName}
+                    </span>{' '}
+                    (Id: {debt.creditor.id}) ${debt.debtAmount}
+                  </div>
+                ))
+              ) : (
+                <div className="settlement-calculator-debt">
+                  All debts are already settled
                 </div>
               ))
-            ) : (
-              <div className="settlement-calculator-debt">
-                All debts are already settled
-              </div>
-            ))
-          : undefined}
+            : undefined}
+        </div>
       </div>
-    </div>
+    </SiteLayout>
   )
 }

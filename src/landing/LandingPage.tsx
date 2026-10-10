@@ -1,124 +1,74 @@
-import { createRef, RefObject, useEffect } from 'react'
-import { Subscription } from 'rxjs'
+import { RefObject, useEffect, useMemo } from 'react'
 
 import { useAppSelector } from '../hooks'
 import { LandingPages } from './LandingPageTypes'
-import HeaderComponent from './header/HeaderComponent'
-import HomePageComponent from './home/HomePageComponent'
-import ContactComponent from './contact/ContactComponent'
-import EmploymentComponent from './employment/EmploymentComponent'
-import EducationComponent from './education/EducationComponent'
-import ProjectComponent from './project/ProjectComponent'
-import AboutComponent from './about/AboutComponent'
-import FooterComponent from './footer/FooterComponent'
-
-import './LandingPage.scss'
-import { useLoadWebsiteInfo } from './hooks'
+import SiteLayout from '../core/shell/SiteLayout'
+import { useScrollSpy, useSectionRefs } from './hooks'
+import { useScrollReveal } from './design/design.hooks'
+import { HeroSection } from './design/HeroSection'
+import { Marquee } from './design/Marquee'
+import { AboutSection } from './design/AboutSection'
+import { WorkSection } from './design/WorkSection'
+import { ExperienceSection } from './design/ExperienceSection'
+import { ProjectsSection } from './design/ProjectsSection'
+import { ContactSection } from './design/ContactSection'
 
 function LandingPage() {
-  const { loadWebsiteInfo } = useLoadWebsiteInfo()
-  const subscriptions: Subscription[] = []
   const view = useAppSelector((state) => state.navigation.view)
+  const websiteInfoLoaded = useAppSelector(
+    (state) => state.information.websiteInfoLoaded
+  )
+  const refs = useSectionRefs()
 
-  const [
-    websiteRef,
-    homeRef,
-    aboutRef,
-    employmentRef,
-    educationRef,
-    projectRef,
-    contactRef,
-  ] = [
-    createRef<HTMLDivElement>(),
-    createRef<HTMLDivElement>(),
-    createRef<HTMLDivElement>(),
-    createRef<HTMLDivElement>(),
-    createRef<HTMLDivElement>(),
-    createRef<HTMLDivElement>(),
-    createRef<HTMLDivElement>(),
-  ]
-
-  useEffect(() => {
-    checkViewToScrollTo(view)
-  }, [view])
-
-  useEffect(() => {
-    loadWebsiteInfo()
-  }, [loadWebsiteInfo])
-
-  useEffect(
-    () => () =>
-      subscriptions.forEach((subscription) => subscription.unsubscribe()),
-    []
+  const sections = useMemo(
+    () =>
+      [
+        [LandingPages.home, refs.home],
+        [LandingPages.about, refs.about],
+        [LandingPages.work, refs.work],
+        [LandingPages.experience, refs.experience],
+        [LandingPages.products, refs.products],
+        [LandingPages.contact, refs.contact],
+      ] as [LandingPages, RefObject<HTMLDivElement>][],
+    [refs]
   )
 
-  const getScrollBehavior = (): ScrollBehavior =>
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  useScrollSpy(sections)
+  useScrollReveal(websiteInfoLoaded)
+
+  useEffect(() => {
+    const target = sections.find(([page]) => page === view)
+    const behavior: ScrollBehavior = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
       ? 'auto'
       : 'smooth'
 
-  const scrollRefIntoView = (ref: RefObject<HTMLDivElement>) =>
-    ref.current?.scrollIntoView({ behavior: getScrollBehavior() })
-
-  const checkViewToScrollTo = (view: LandingPages) => {
-    switch (view) {
-      case LandingPages.home:
-        scrollRefIntoView(homeRef)
-        break
-
-      case LandingPages.about:
-        scrollRefIntoView(aboutRef)
-        break
-
-      case LandingPages.employment:
-        scrollRefIntoView(employmentRef)
-        break
-
-      case LandingPages.education:
-        scrollRefIntoView(educationRef)
-        break
-
-      case LandingPages.project:
-        scrollRefIntoView(projectRef)
-        break
-
-      case LandingPages.contact:
-        scrollRefIntoView(contactRef)
-        break
-
-      default:
-        return
-    }
-  }
+    target?.[1].current?.scrollIntoView({ behavior })
+  }, [view, sections])
 
   return (
-    <div className="landing-page" ref={websiteRef}>
-      <a className="skip-link" href="#main-content">
-        Skip to main content
-      </a>
-      <HeaderComponent></HeaderComponent>
-      <main id="main-content" tabIndex={-1} className="landing-page-body">
-        <div ref={homeRef}>
-          <HomePageComponent></HomePageComponent>
-        </div>
-        <div ref={aboutRef}>
-          <AboutComponent></AboutComponent>
-        </div>
-        <div ref={employmentRef}>
-          <EmploymentComponent></EmploymentComponent>
-        </div>
-        <div ref={projectRef}>
-          <ProjectComponent></ProjectComponent>
-        </div>
-        <div ref={educationRef}>
-          <EducationComponent></EducationComponent>
-        </div>
-        <div ref={contactRef}>
-          <ContactComponent></ContactComponent>
-        </div>
-      </main>
-      <FooterComponent></FooterComponent>
-    </div>
+    <SiteLayout>
+      <div ref={refs.home}>
+        <HeroSection />
+      </div>
+      <Marquee />
+      <div ref={refs.about}>
+        <AboutSection />
+      </div>
+      <div ref={refs.work}>
+        <WorkSection />
+      </div>
+      <div ref={refs.experience}>
+        <ExperienceSection />
+      </div>
+      <div ref={refs.products}>
+        <ProjectsSection />
+      </div>
+      <div ref={refs.contact}>
+        <ContactSection />
+      </div>
+    </SiteLayout>
   )
 }
 

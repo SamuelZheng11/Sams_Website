@@ -2,14 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/TabThumbnail.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon/favicon.svg" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon/favicon-180.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#6E56FF" />
     <meta
       name="description"
-      content="Portfolio of Samuel Zheng, software developer. Includes my work experience, education, projects and an interactive travel log."
+      content="Portfolio of Samuel Zheng, software engineer. Includes work experience, education, projects, products shipped and an interactive travel log."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/TabThumbnail.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved theme + accent before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        var p = localStorage.getItem('p');
+        if (p) document.documentElement.dataset.p = p;
+      } catch (e) {}
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,7 +41,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Samuel Zheng</title>
+    <title>Samuel Zheng - Software Engineer</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

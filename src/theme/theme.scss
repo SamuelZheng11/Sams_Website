@@ -7,3 +7,6 @@
 :root[data-theme='dark'] {
   @include darkmode();
 }
+
+// Accent palettes override the mode defaults; emitted last to win the tie.
+@include accent-palettes();

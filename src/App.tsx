@@ -7,9 +7,10 @@ import { TravelLog } from './travel-log/TravelLog'
 
 export function App() {
   const theme = useAppSelector((state) => state.theme.theme)
+  const palette = useAppSelector((state) => state.theme.palette)
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} palette={palette}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
