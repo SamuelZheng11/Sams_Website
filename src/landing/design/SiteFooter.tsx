@@ -2,6 +2,8 @@ import { useAppSelector } from '../../hooks'
 import { useLocalClock } from './design.hooks'
 import { LOCATION_TIMEZONE } from './constants'
 
+import './SiteFooter.scss'
+
 interface ISiteFooterProps {
   // `sub-footer` renders the compact variant used on sub-pages; the default
   // inherits the contact section's on-accent footer styling.

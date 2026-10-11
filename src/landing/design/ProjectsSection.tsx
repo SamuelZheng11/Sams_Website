@@ -5,6 +5,8 @@ import { SplitHeading } from './SplitHeading'
 import { formatYearLabel } from './format'
 import { PROJECTS_SECTION_EYEBROW, PROJECTS_SECTION_INTRO } from './constants'
 
+import './ProjectsSection.scss'
+
 // The project catalogue rendered as the reference's "writing" rows: project
 // name on the left, its date span on the right, each row linking out to the
 // repository. It keeps the `#writing` anchor so navigation is unchanged.

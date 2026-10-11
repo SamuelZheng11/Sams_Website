@@ -1,0 +1,43 @@
+/* The site footer shared by the landing contact section and the sub-page
+   shell. The sub-page variant (.sub-footer) is styled in SiteLayout.scss. */
+
+footer {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font: 500 13px var(--font-mono);
+  border-top: 2px solid var(--on-accent);
+  padding-top: 20px;
+}
+
+footer p {
+  flex: 1 0 100%;
+  margin: 0;
+  font: 500 13px var(--font-mono);
+  opacity: 0.85;
+}
+
+footer p.stack {
+  opacity: 0.6;
+}
+
+footer button {
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 720px) {
+  .cmd-hint {
+    display: none;
+  }
+  footer button {
+    flex: 1 0 100%;
+    text-align: center;
+  }
+}

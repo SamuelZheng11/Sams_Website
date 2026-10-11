@@ -6,6 +6,8 @@ import { SplitHeading } from './SplitHeading'
 import { SiteFooter } from './SiteFooter'
 import { CONTACT_INTRO } from './constants'
 
+import './ContactSection.scss'
+
 const GITHUB_BASE_URL = 'https://github.com'
 const LINKED_IN_BASE_URL = 'https://www.linkedin.com'
 

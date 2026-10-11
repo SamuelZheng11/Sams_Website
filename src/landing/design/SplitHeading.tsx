@@ -1,5 +1,7 @@
 import { CSSProperties, Fragment } from 'react'
 
+import './SplitHeading.scss'
+
 export interface ISplitSegment {
   text: string
   em?: boolean

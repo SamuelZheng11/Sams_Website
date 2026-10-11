@@ -1,0 +1,92 @@
+/* The small-screen navigation flyout opened from the header hamburger. Hidden
+   on desktop; the header itself lives in LandingNav.scss. */
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-scrim,
+.nav-flyout {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .menu-toggle {
+    display: grid;
+  }
+  .nav-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    border: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .nav-scrim.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-flyout {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    width: min(320px, 82vw);
+    padding: calc(env(safe-area-inset-top, 0px) + 20px) 20px
+      calc(env(safe-area-inset-bottom, 0px) + 20px);
+    background: var(--surface);
+    border-left: 1px solid var(--line);
+    box-shadow: -30px 0 60px rgba(0, 0, 0, 0.25);
+    transform: translateX(100%);
+    visibility: hidden;
+    overflow-y: auto;
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s;
+  }
+  .nav-flyout.is-open {
+    transform: none;
+    visibility: visible;
+  }
+  .nav-flyout-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .nav-flyout-head .logo {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+  .nav-flyout ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav-flyout a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .nav-flyout a.active {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}

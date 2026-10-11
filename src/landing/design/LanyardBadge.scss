@@ -1,0 +1,237 @@
+/* The interactive lanyard ID badge: the swing animation, the strap, and the
+   badge card itself (photo, name, tags, barcode). */
+
+.badge-stage {
+  flex: 1 1 340px;
+  display: flex;
+  justify-content: center;
+  padding: 180px 0 24px;
+  perspective: 1000px;
+}
+.lanyard {
+  --strap-height: 1600px;
+  --swing-angle: 1.4deg;
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  transform-origin: 50% calc(60px - var(--strap-height));
+}
+
+.lanyard.swing {
+  animation: swing 2.6s ease-out both;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(calc(var(--swing-angle) * -3));
+  }
+  18% {
+    transform: rotate(calc(var(--swing-angle) * 2.2));
+  }
+  38% {
+    transform: rotate(calc(var(--swing-angle) * -1.5));
+  }
+  58% {
+    transform: rotate(calc(var(--swing-angle) * 0.9));
+  }
+  78% {
+    transform: rotate(calc(var(--swing-angle) * -0.4));
+  }
+  100% {
+    transform: none;
+  }
+}
+.strap {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 700px;
+  height: var(--strap-height);
+  margin: 0 0 -60px -350px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+.strap svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 700px;
+  height: 1660px;
+  overflow: visible;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+}
+
+.badge {
+  position: relative;
+  background: #fff;
+  color: #111;
+  border-radius: 26px;
+  padding: 44px 20px 20px;
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.18s ease-out;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.badge:active {
+  cursor: grabbing;
+}
+.badge::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  width: 40px;
+  height: 12px;
+  margin-left: -20px;
+  border-radius: 6px;
+  background: #17131f;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.hook {
+  position: absolute;
+  left: 50%;
+  top: -52px;
+  width: 40px;
+  height: 84px;
+  margin-left: -20px;
+  pointer-events: none;
+}
+
+.badge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--glare-x, 30%) var(--glare-y, 20%),
+    color-mix(in srgb, var(--accent) 38%, transparent),
+    transparent 55%
+  );
+}
+
+.badge .badge-photo.mono {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 22%, #fff);
+}
+
+.badge .badge-photo.mono span {
+  font: 700 124px var(--font-body);
+  letter-spacing: -0.07em;
+  color: var(--accent);
+  margin-right: 0.07em;
+}
+
+.badge .badge-photo {
+  height: 252px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.badge .badge-photo svg,
+.badge .badge-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.badge .badge-photo img {
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.badge .badge-name {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.badge .badge-role {
+  color: #5a4a47;
+}
+
+.badge-tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  font: 500 11px var(--font-mono);
+}
+
+.badge-tags span {
+  background: #111;
+  color: #fff;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+
+.badge-tags .badge-shipped {
+  background: color-mix(in srgb, var(--accent) 28%, #fff);
+  color: #111;
+}
+
+.badge-barcode {
+  height: 30px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111 0 2px,
+    transparent 2px 5px,
+    #111 5px 8px,
+    transparent 8px 10px
+  );
+  opacity: 0.85;
+  border-radius: 3px;
+}
+
+@media (pointer: coarse) {
+  .badge {
+    touch-action: pan-y;
+  }
+}
+
+@media (max-width: 940px) {
+  .lanyard {
+    --strap-height: 230px;
+    --swing-angle: 6deg;
+  }
+  .badge-stage {
+    padding-top: 190px;
+  }
+  .strap {
+    -webkit-mask-image: linear-gradient(to top, #000 55%, transparent);
+    mask-image: linear-gradient(to top, #000 55%, transparent);
+  }
+}
+
+@media (max-width: 720px) {
+  .lanyard {
+    width: 300px;
+  }
+  .badge {
+    padding: 40px 18px 18px;
+    gap: 12px;
+    border-radius: 22px;
+  }
+  .badge .badge-photo {
+    height: 210px;
+  }
+  .badge .badge-photo.mono span {
+    font-size: 104px;
+  }
+  .badge .badge-name {
+    font-size: 26px;
+  }
+}

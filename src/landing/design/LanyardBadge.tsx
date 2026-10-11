@@ -3,6 +3,8 @@ import { CSSProperties, RefObject, useEffect, useRef } from 'react'
 import { useAppSelector } from '../../hooks'
 import { HERO_BADGE_SHIPPED_TAG, HERO_BADGE_TAGS, HERO_ROLE } from './constants'
 
+import './LanyardBadge.scss'
+
 interface ILanyardBadgeProps {
   // The hero section element, used to bound the pointer-driven 3D tilt.
   heroRef: RefObject<HTMLElement>

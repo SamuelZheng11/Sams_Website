@@ -1,0 +1,120 @@
+/* HERO: the full-bleed accent panel with the headline copy and the interactive
+   lanyard badge (the badge itself lives in LanyardBadge.scss). */
+
+#home {
+  position: relative;
+  background: var(--accent);
+  color: var(--on-accent);
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + 48px) 0 64px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  --spot-x: 50%;
+  --spot-y: 30%;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      color-mix(in srgb, var(--on-accent) 12%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--on-accent) 12%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(
+    circle 460px at var(--spot-x) var(--spot-y),
+    #000,
+    rgba(0, 0, 0, 0.1)
+  );
+  mask-image: radial-gradient(
+    circle 460px at var(--spot-x) var(--spot-y),
+    #000,
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+#home .container {
+  position: relative;
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-copy {
+  flex: 1 1 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-copy .eyebrow {
+  color: var(--on-accent);
+  opacity: 0.75;
+}
+
+.hero-copy .eyebrow::before {
+  background: var(--on-accent);
+}
+
+h1 {
+  font-size: clamp(60px, 10vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  font-weight: 700;
+}
+
+h1 em {
+  font-size: 1.06em;
+  letter-spacing: -0.02em;
+}
+
+.hero-copy p {
+  font-size: 22px;
+  max-width: 470px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.scroll-cue {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--on-accent);
+  font: 500 13px var(--font-mono);
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  align-self: flex-start;
+  display: flex;
+  gap: 10px;
+}
+
+.scroll-cue b {
+  display: inline-block;
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 860px) {
+  .scroll-cue {
+    display: none;
+  }
+}

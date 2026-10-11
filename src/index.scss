@@ -133,6 +133,7 @@ html::-webkit-scrollbar-thumb:active {
   border-radius: $size-xx-small;
 }
 
-// The ID-Badge design system: tokens, sections, motion and breakpoints. Kept
-// after the legacy resets/tokens so its rules win on specificity ties.
-@import 'src/id-badge.scss';
+// The ID-Badge design system: shared tokens, resets and primitives. Each
+// landing section owns its own stylesheet next to its component; this shared
+// file is imported first so section rules win on specificity ties.
+@import 'src/landing/design/shared.scss';

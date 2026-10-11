@@ -7,6 +7,8 @@ import { usePointerSpotlight } from './design.hooks'
 import { HERO_TAGLINE } from './constants'
 import { scrollToSection } from './scroll'
 
+import './HeroSection.scss'
+
 // The full-viewport hero: accent background with a pointer-tracked grid
 // spotlight, the masked headline on the left and the draggable lanyard ID
 // badge on the right.
