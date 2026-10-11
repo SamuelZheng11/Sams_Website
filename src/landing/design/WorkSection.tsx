@@ -3,6 +3,8 @@ import { CSSProperties } from 'react'
 import { useAppSelector } from '../../hooks'
 import { SplitHeading } from './SplitHeading'
 
+import './WorkSection.scss'
+
 interface IProjectVisualProps {
   index: number
 }

@@ -5,6 +5,8 @@ import { SplitHeading } from './SplitHeading'
 import { useTimelineFill } from './design.hooks'
 import { formatYearLabel } from './format'
 
+import './ExperienceSection.scss'
+
 const EDUCATION_TITLE = 'B.E. (Hons) Software Engineering'
 
 // The vertical timeline builds its rows from the employment data and closes

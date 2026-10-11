@@ -7,6 +7,8 @@ import { SETTLEMENTS_ROUTE, TRAVELS_ROUTE } from '../header/HeaderConstants'
 import { cyclePalette, toggleTheme } from '../../theme/slice/ThemeSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 
+import './CommandMenu.scss'
+
 interface ICommand {
   label: string
   group: string

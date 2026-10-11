@@ -1,0 +1,104 @@
+/* EXPERIENCE: the vertical timeline with period, role and achievement lists. */
+
+.timeline {
+  position: relative;
+  margin-left: 8px;
+  padding-left: 40px;
+  --progress: 0;
+}
+
+.timeline::before,
+.timeline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: var(--line);
+}
+
+.timeline::after {
+  background: var(--accent);
+  transform-origin: top;
+  transform: scaleY(var(--progress));
+}
+
+.timeline-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 24px;
+  padding-bottom: 56px;
+}
+
+.timeline-row::before {
+  content: '';
+  position: absolute;
+  left: -48px;
+  top: 6px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 3px solid var(--line);
+  transition: 0.4s;
+  z-index: 1;
+}
+
+.timeline-row.visible::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.timeline-row .timeline-period {
+  font: 500 13px var(--font-mono);
+  color: var(--muted);
+  padding-top: 7px;
+}
+
+.timeline-row h3 {
+  font-size: 30px;
+  letter-spacing: -0.025em;
+}
+
+.timeline-row h3 em {
+  font-size: 1.08em;
+}
+
+.timeline-row p {
+  color: var(--muted);
+  max-width: 600px;
+  margin-top: 8px;
+}
+
+.timeline-row ul.achievements {
+  color: var(--muted);
+  margin: 8px 0 0;
+  padding-left: 20px;
+  list-style: none;
+  max-width: 600px;
+}
+
+.timeline-row ul.achievements li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.timeline-row ul.achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}

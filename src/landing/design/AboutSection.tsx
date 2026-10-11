@@ -10,6 +10,8 @@ import {
   STACK_CHIPS,
 } from './constants'
 
+import './AboutSection.scss'
+
 interface IStatTileProps {
   value: number
   prefix: string

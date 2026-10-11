@@ -46,3 +46,37 @@
     }
   }
 }
+
+// Sub-page shell (settlements / travel log): a padded, wrapped column with the
+// compact footer variant.
+.sub-page {
+  padding: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 48px) 0 96px;
+}
+
+.sub-footer {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font: 500 13px var(--font-mono);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+.sub-footer button {
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 720px) {
+  .sub-footer button {
+    flex: 1 0 100%;
+    text-align: center;
+  }
+}

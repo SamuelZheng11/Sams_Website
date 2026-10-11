@@ -1,0 +1,163 @@
+/* WORK: the horizontally scrolling catalogue of shipped products, including
+   the three placeholder visuals (bars, trend line, progress ring). */
+
+.work-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  padding: 4px 4px 22px 2px;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+}
+
+.work-scroll .product-card {
+  flex: 0 0 min(340px, 86vw);
+  scroll-snap-align: start;
+}
+
+.g3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+.product-visual {
+  height: 190px;
+  border-radius: 16px;
+  background: var(--surface-muted);
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.product-visual-image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.product-visual-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card h3 {
+  font-size: 28px;
+  letter-spacing: -0.025em;
+}
+
+.product-card p {
+  color: var(--muted);
+}
+
+.product-card .product-cta {
+  margin-top: auto;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.product-card .product-cta i {
+  font-style: normal;
+  transition: transform 0.3s;
+}
+
+.product-card:hover .product-cta i {
+  transform: translateX(6px);
+}
+
+.chart-bars {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+}
+
+.chart-bars i {
+  flex: 1;
+  background: var(--accent);
+  border-radius: 6px 6px 0 0;
+  height: var(--bar-height);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--bar-index, 0) * 80ms);
+}
+
+.visible .chart-bars i {
+  transform: none;
+}
+
+.product-visual svg {
+  width: 100%;
+  height: 100%;
+}
+
+.trend-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s ease;
+}
+
+.visible .trend-line {
+  stroke-dashoffset: 0;
+}
+
+.progress-ring {
+  fill: none;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.progress-ring--active {
+  stroke: var(--accent);
+  stroke-dasharray: 0 100;
+  transition: stroke-dasharray 1.6s ease;
+}
+
+.visible .progress-ring--active {
+  stroke-dasharray: 78 100;
+}
+
+@media (max-width: 720px) {
+  .product-card .chips {
+    gap: 6px;
+  }
+  .product-card .chips span {
+    padding: 5px 11px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-bars i {
+    transform: none;
+  }
+  .trend-line {
+    stroke-dashoffset: 0;
+  }
+  .progress-ring--active {
+    stroke-dasharray: 78 100;
+  }
+}

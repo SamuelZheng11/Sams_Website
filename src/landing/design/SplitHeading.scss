@@ -1,0 +1,32 @@
+/* SPLIT HEADING: the masked, word-by-word rise used by section headings. */
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.04em 0.12em;
+  margin: 0 -0.04em -0.12em;
+}
+
+.word > span {
+  display: inline-block;
+  transform: translateY(112%);
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--stagger) * 70ms);
+}
+
+.split.visible .word > span {
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .split-word.split-block {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word > span {
+    transform: none;
+  }
+}

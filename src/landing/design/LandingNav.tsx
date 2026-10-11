@@ -5,12 +5,18 @@ import { NAVIGATION_ITEMS } from '../header/HeaderConstants'
 import { scrollTo } from '../slice/LandingPageNavigationSlice'
 import { cyclePalette, toggleTheme } from '../../theme/slice/ThemeSlice'
 import { useJsClass, useScrollProgress, useShortcutLabel } from './design.hooks'
+import { NavMenu } from './NavMenu'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 
+import './LandingNav.scss'
+
 const THEME_SWITCH_LABEL = 'Dark mode'
+const SITE_NAME = 'samuelzheng.com'
 
 // The fixed, translucent header with section pills, the command-menu trigger,
-// the accent dot, the light/dark switch and the scroll progress bar.
+// the accent dot, the light/dark switch and the scroll progress bar. On small
+// screens the section pills collapse into a slide-in flyout (see `NavMenu`)
+// behind a hamburger toggle, while the logo and the tools stay in the header.
 export function LandingNav() {
   useJsClass()
   useScrollProgress()
@@ -47,7 +53,7 @@ export function LandingNav() {
           href="#home"
           onClick={() => navigateTo(LandingPages.home)}
         >
-          samuelzheng.com
+          {SITE_NAME}
         </a>
         <ul>
           {NAVIGATION_ITEMS.map(({ title, page, href }) => (
@@ -75,6 +81,12 @@ export function LandingNav() {
           >
             {shortcutLabel}
           </button>
+          <NavMenu
+            items={NAVIGATION_ITEMS}
+            activePage={isOnLanding ? activeView : null}
+            onNavigate={navigateTo}
+            brand={SITE_NAME}
+          />
           <button
             className="icon-button"
             id="accent-switcher"

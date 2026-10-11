@@ -1,0 +1,55 @@
+/* The Ctrl/Cmd + K command palette rendered as a native <dialog>. */
+
+dialog {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 18px;
+  padding: 0;
+  width: min(560px, 92vw);
+  margin: 12vh auto auto;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+#command-input {
+  width: 100%;
+  padding: 20px 22px;
+  font: 500 18px var(--font-body);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  outline: 0;
+}
+
+#command-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+#command-list li {
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#command-list li.is-selected {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+#command-list small {
+  font: 500 12px var(--font-mono);
+  opacity: 0.7;
+}

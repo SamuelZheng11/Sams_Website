@@ -2,6 +2,8 @@ import { Fragment } from 'react'
 
 import { MARQUEE_ITEMS } from './constants'
 
+import './Marquee.scss'
+
 // The infinite accent marquee band that separates the hero from About. The
 // track is rendered twice so the CSS `translateX(-50%)` loop is seamless.
 export function Marquee() {
