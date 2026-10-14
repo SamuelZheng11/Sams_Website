@@ -5,7 +5,7 @@ import './SplitHeading.scss'
 export interface ISplitSegment {
   text: string
   em?: boolean
-  /** Force this segment onto its own line at smaller breakpoints. */
+  /** Force this segment onto its own line. */
   stack?: boolean
 }
 

@@ -211,16 +211,16 @@ export function LanyardBadge({ heroRef }: ILanyardBadgeProps) {
               dominant-baseline="central"
             >
               <text transform="translate(337.0,1476) rotate(-96.00)">
-                SZ / SOFTWARE ENGINEER / SZ / SOFTWARE ENGINEER / SZ / SOFTWARE
-                ENGINEER / SZ / SOFTWARE ENGINEER / SZ / SOFTWARE ENGINEER / SZ
-                / SOFTWARE ENGINEER / SZ / SOFTWARE ENGINEER / SZ / SOFTWARE
-                ENGINEER / SZ / SOFTWARE ENGINEER /{' '}
+                SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI
+                ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI
+                ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI
+                ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER /{' '}
               </text>
               <text transform="translate(363.0,1476) rotate(-84.00)">
-                SZ / SOFTWARE ENGINEER / SZ / SOFTWARE ENGINEER / SZ / SOFTWARE
-                ENGINEER / SZ / SOFTWARE ENGINEER / SZ / SOFTWARE ENGINEER / SZ
-                / SOFTWARE ENGINEER / SZ / SOFTWARE ENGINEER / SZ / SOFTWARE
-                ENGINEER / SZ / SOFTWARE ENGINEER /{' '}
+                SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI
+                ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI
+                ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER / SZ / AI
+                ENGINEER / SZ / AI ENGINEER / SZ / AI ENGINEER /{' '}
               </text>
             </g>
             <rect

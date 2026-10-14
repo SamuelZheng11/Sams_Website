@@ -72,7 +72,8 @@
   margin-top: 8px;
 }
 
-.timeline-row ul.achievements {
+.timeline-row ul.achievements,
+.timeline-row ul.highlights {
   color: var(--muted);
   margin: 8px 0 0;
   padding-left: 20px;
@@ -80,12 +81,14 @@
   max-width: 600px;
 }
 
-.timeline-row ul.achievements li {
+.timeline-row ul.achievements li,
+.timeline-row ul.highlights li {
   position: relative;
   padding-left: 14px;
 }
 
-.timeline-row ul.achievements li::before {
+.timeline-row ul.achievements li::before,
+.timeline-row ul.highlights li::before {
   content: '';
   position: absolute;
   left: 0;
