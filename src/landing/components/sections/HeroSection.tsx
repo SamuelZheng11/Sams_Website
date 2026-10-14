@@ -1,11 +1,11 @@
 import { CSSProperties, useRef } from 'react'
 
-import { useAppSelector } from '../../hooks'
-import { SplitHeading } from './SplitHeading'
-import { LanyardBadge } from './LanyardBadge'
-import { usePointerSpotlight } from './design.hooks'
-import { HERO_TAGLINE } from './constants'
-import { scrollToSection } from './scroll'
+import { useAppSelector } from '../../../hooks'
+import { SplitHeading } from '../shared/SplitHeading'
+import { LanyardBadge } from '../shared/LanyardBadge'
+import { usePointerSpotlight } from '../helpers/hooks'
+import { HERO_TAGLINE } from '../helpers/constants'
+import { scrollToSection } from '../helpers/scroll'
 
 import './HeroSection.scss'
 

@@ -1,11 +1,11 @@
 import { ReactNode, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { LandingPages } from '../LandingPageTypes'
-import { scrollTo } from '../slice/LandingPageNavigationSlice'
-import { SETTLEMENTS_ROUTE, TRAVELS_ROUTE } from '../header/HeaderConstants'
-import { cyclePalette, toggleTheme } from '../../theme/slice/ThemeSlice'
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { LandingPages } from '../../LandingPageTypes'
+import { scrollTo } from '../../slice/LandingPageNavigationSlice'
+import { SETTLEMENTS_ROUTE, TRAVELS_ROUTE } from '../../header/HeaderConstants'
+import { cyclePalette, toggleTheme } from '../../../theme/slice/ThemeSlice'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 
 import './CommandMenu.scss'
 

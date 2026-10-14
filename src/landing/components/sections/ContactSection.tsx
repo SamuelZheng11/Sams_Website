@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useAppSelector } from '../../hooks'
-import { SplitHeading } from './SplitHeading'
-import { SiteFooter } from './SiteFooter'
-import { CONTACT_INTRO } from './constants'
+import { useAppSelector } from '../../../hooks'
+import { SplitHeading } from '../shared/SplitHeading'
+import { SiteFooter } from '../layout/SiteFooter'
+import { CONTACT_INTRO } from '../helpers/constants'
 
 import './ContactSection.scss'
 

@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 
-import { useAppSelector } from '../../hooks'
-import { SplitHeading } from './SplitHeading'
-import { useTimelineFill } from './design.hooks'
-import { formatYearLabel } from './format'
+import { useAppSelector } from '../../../hooks'
+import { SplitHeading } from '../shared/SplitHeading'
+import { useTimelineFill } from '../helpers/hooks'
+import { formatYearLabel } from '../helpers/format'
 
 import './ExperienceSection.scss'
 

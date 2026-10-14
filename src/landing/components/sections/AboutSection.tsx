@@ -1,14 +1,15 @@
 import { CSSProperties, useRef } from 'react'
 
-import { useAppSelector } from '../../hooks'
-import { SplitHeading } from './SplitHeading'
-import { useCounter, useLocalClock } from './design.hooks'
+import { useAppSelector } from '../../../hooks'
+import { SplitHeading } from '../shared/SplitHeading'
+import { Chips } from '../shared/Chips'
+import { useCounter, useLocalClock } from '../helpers/hooks'
 import {
   LOCATION_TIMEZONE,
   OPEN_TO_WORK_ROLES,
   STAT_TILES,
   STACK_CHIPS,
-} from './constants'
+} from '../helpers/constants'
 
 import './AboutSection.scss'
 
@@ -105,11 +106,7 @@ export function AboutSection() {
           ))}
 
           <div className="tile spotlight span-6 reveal">
-            <div className="chips">
-              {STACK_CHIPS.map((chip) => (
-                <span key={chip}>{chip}</span>
-              ))}
-            </div>
+            <Chips items={STACK_CHIPS} />
           </div>
         </div>
       </div>

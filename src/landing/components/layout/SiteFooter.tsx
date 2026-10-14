@@ -1,6 +1,6 @@
-import { useAppSelector } from '../../hooks'
-import { useLocalClock } from './design.hooks'
-import { LOCATION_TIMEZONE } from './constants'
+import { useAppSelector } from '../../../hooks'
+import { useLocalClock } from '../helpers/hooks'
+import { LOCATION_TIMEZONE } from '../helpers/constants'
 
 import './SiteFooter.scss'
 

@@ -1,7 +1,8 @@
 import { CSSProperties } from 'react'
 
-import { useAppSelector } from '../../hooks'
-import { SplitHeading } from './SplitHeading'
+import { useAppSelector } from '../../../hooks'
+import { SplitHeading } from '../shared/SplitHeading'
+import { Chips } from '../shared/Chips'
 
 import './WorkSection.scss'
 
@@ -132,13 +133,7 @@ export function WorkSection() {
                     <ProjectVisual index={index} />
                   )}
                 </div>
-                {chips.length > 0 && (
-                  <div className="chips">
-                    {chips.map((chip) => (
-                      <span key={chip}>{chip}</span>
-                    ))}
-                  </div>
-                )}
+                {chips.length > 0 && <Chips items={chips} />}
                 <h3>{product.name}</h3>
                 {product.summary && <p>{product.summary}</p>}
                 <span className="product-cta">
