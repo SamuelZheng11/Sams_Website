@@ -19,10 +19,8 @@
   transform: none;
 }
 
-@media (max-width: 720px) {
-  .split-word.split-block {
-    display: block;
-  }
+.split-word.split-block {
+  display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {

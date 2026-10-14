@@ -41,7 +41,16 @@ export function ExperienceSection() {
                   {employment.title ? `${employment.title}, ` : ''}
                   <em>{employment.employer}</em>
                 </h3>
-                <p>{employment.summaries?.[0]}</p>
+                {employment.summaries?.[0] && (
+                  <p>{employment.summaries[0]}</p>
+                )}
+                {employment.summaries && employment.summaries.length > 1 && (
+                  <ul className="highlights">
+                    {employment.summaries.slice(1, 5).map((summary) => (
+                      <li key={summary}>{summary}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           ))}

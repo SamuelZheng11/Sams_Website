@@ -24,7 +24,9 @@ export function HeroSection() {
     <section id="home" ref={heroRef}>
       <div className="container">
         <div className="hero-copy">
-          <div className="eyebrow reveal">Software engineer / {location}</div>
+          <div className="eyebrow reveal">
+            Agentic AI &amp; full-stack engineer / {location}
+          </div>
 
           <SplitHeading
             as="h1"
@@ -32,7 +34,7 @@ export function HeroSection() {
             segments={[
               { text: 'Meet Sam' },
               { text: 'the', em: true, stack: true },
-              { text: 'engineer.' },
+              { text: 'AI engineer.' },
             ]}
           />
 
