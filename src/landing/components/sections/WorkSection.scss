@@ -140,16 +140,6 @@
   stroke-dasharray: 78 100;
 }
 
-@media (max-width: 720px) {
-  .product-card .chips {
-    gap: 6px;
-  }
-  .product-card .chips span {
-    padding: 5px 11px;
-    font-size: 13px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .chart-bars i {
     transform: none;

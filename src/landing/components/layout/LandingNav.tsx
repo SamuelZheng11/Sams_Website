@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { LandingPages } from '../LandingPageTypes'
-import { NAVIGATION_ITEMS } from '../header/HeaderConstants'
-import { scrollTo } from '../slice/LandingPageNavigationSlice'
-import { cyclePalette, toggleTheme } from '../../theme/slice/ThemeSlice'
-import { useJsClass, useScrollProgress, useShortcutLabel } from './design.hooks'
+import { LandingPages } from '../../LandingPageTypes'
+import { NAVIGATION_ITEMS } from '../../header/HeaderConstants'
+import { scrollTo } from '../../slice/LandingPageNavigationSlice'
+import { cyclePalette, toggleTheme } from '../../../theme/slice/ThemeSlice'
+import { useJsClass, useScrollProgress, useShortcutLabel } from '../helpers/hooks'
 import { NavMenu } from './NavMenu'
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 
 import './LandingNav.scss'
 

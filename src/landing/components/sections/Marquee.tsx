@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { MARQUEE_ITEMS } from './constants'
+import { MARQUEE_ITEMS } from '../helpers/constants'
 
 import './Marquee.scss'
 

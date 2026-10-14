@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { LandingPages } from '../LandingPageTypes'
+import { LandingPages } from '../../LandingPageTypes'
 
 import './NavMenu.scss'
 

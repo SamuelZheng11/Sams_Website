@@ -136,4 +136,4 @@ html::-webkit-scrollbar-thumb:active {
 // The ID-Badge design system: shared tokens, resets and primitives. Each
 // landing section owns its own stylesheet next to its component; this shared
 // file is imported first so section rules win on specificity ties.
-@import 'src/landing/design/shared.scss';
+@import 'src/landing/components/shared.scss';

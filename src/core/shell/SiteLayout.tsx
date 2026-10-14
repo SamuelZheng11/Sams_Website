@@ -1,8 +1,8 @@
 import { ReactElement, useEffect, useRef } from 'react'
 
-import { LandingNav } from '../../landing/design/LandingNav'
-import { CommandMenu } from '../../landing/design/CommandMenu'
-import { SiteFooter } from '../../landing/design/SiteFooter'
+import { LandingNav } from '../../landing/components/layout/LandingNav'
+import { CommandMenu } from '../../landing/components/layout/CommandMenu'
+import { SiteFooter } from '../../landing/components/layout/SiteFooter'
 import { useLoadWebsiteInfo } from '../../landing/hooks'
 
 import './SiteLayout.scss'

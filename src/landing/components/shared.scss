@@ -1,7 +1,7 @@
 /* =============================================================================
    Shared design vocabulary for the landing page and sub-page shells: tokens,
    global resets and the primitives (.container, .eyebrow, .btn, .tile,
-   .spotlight, .chips, .icon-button) reused across several sections. Section-
+   .spotlight, .icon-button) reused across several sections. Section-
    specific rules live beside their component instead.
    ============================================================================= */
 
@@ -221,29 +221,6 @@ section a:focus-visible {
 
 .spotlight > * {
   position: relative;
-}
-
-/* CHIPS: the pill list shared by the About stack tile and the Work cards. */
-.chips {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.chips span {
-  padding: 10px 18px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface-muted);
-  font-weight: 500;
-  transition: 0.25s;
-}
-
-.chips span:hover {
-  background: var(--accent);
-  color: var(--on-accent);
-  border-color: var(--accent);
-  transform: translateY(-3px);
 }
 
 /* MOTION: scroll-reveal used by every section. */

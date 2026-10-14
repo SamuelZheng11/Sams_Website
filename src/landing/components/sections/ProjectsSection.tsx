@@ -1,9 +1,9 @@
 import { CSSProperties } from 'react'
 
-import { useAppSelector } from '../../hooks'
-import { SplitHeading } from './SplitHeading'
-import { formatYearLabel } from './format'
-import { PROJECTS_SECTION_EYEBROW, PROJECTS_SECTION_INTRO } from './constants'
+import { useAppSelector } from '../../../hooks'
+import { SplitHeading } from '../shared/SplitHeading'
+import { formatYearLabel } from '../helpers/format'
+import { PROJECTS_SECTION_EYEBROW, PROJECTS_SECTION_INTRO } from '../helpers/constants'
 
 import './ProjectsSection.scss'
 
